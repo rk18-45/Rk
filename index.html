@@ -1,0 +1,5974 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Your Logo Website</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#000;
+    color:#fff;
+    font-family:Arial,Helvetica,sans-serif;
+    min-height:100vh;
+}
+
+.page{
+    min-height:100vh;
+    position:relative;
+    overflow:hidden;
+    isolation:isolate;
+
+    /* Deep-space base */
+    background:
+        radial-gradient(circle at 50% 55%,
+            rgba(150,255,0,.22) 0,
+            rgba(0,255,70,.10) 12%,
+            transparent 35%),
+        radial-gradient(ellipse at 78% 20%,
+            rgba(0,255,80,.22),
+            transparent 38%),
+        radial-gradient(ellipse at 12% 52%,
+            rgba(0,255,80,.18),
+            transparent 40%),
+        linear-gradient(180deg,#000 0%,#001006 36%,#00250d 62%,#000 100%);
+}
+
+.page:before{
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:0;
+    pointer-events:none;
+
+    /* Moving stars */
+    background:
+        radial-gradient(circle at 8% 18%,#fff 0 1px,transparent 2px),
+        radial-gradient(circle at 17% 34%,#fff 0 1px,transparent 2px),
+        radial-gradient(circle at 29% 13%,#d9ffd9 0 1px,transparent 2px),
+        radial-gradient(circle at 42% 28%,#fff 0 1px,transparent 2px),
+        radial-gradient(circle at 55% 16%,#d9ffd9 0 1px,transparent 2px),
+        radial-gradient(circle at 67% 31%,#fff 0 1px,transparent 2px),
+        radial-gradient(circle at 79% 15%,#fff 0 1px,transparent 2px),
+        radial-gradient(circle at 91% 37%,#d9ffd9 0 1px,transparent 2px),
+        radial-gradient(circle at 23% 61%,#fff 0 1px,transparent 2px),
+        radial-gradient(circle at 48% 72%,#fff 0 1px,transparent 2px),
+        radial-gradient(circle at 74% 63%,#fff 0 1px,transparent 2px),
+        radial-gradient(circle at 88% 78%,#d9ffd9 0 1px,transparent 2px);
+    background-size:170px 170px,210px 210px,240px 240px,190px 190px,
+                     260px 260px,220px 220px,300px 300px,180px 180px,
+                     250px 250px,210px 210px,280px 280px,230px 230px;
+    opacity:.85;
+    animation:starsMove 18s linear infinite, starsGlow 3s ease-in-out infinite alternate;
+}
+
+.page:after{
+    content:"";
+    position:absolute;
+    left:-15%;
+    right:-15%;
+    bottom:-8%;
+    height:55%;
+    z-index:0;
+    pointer-events:none;
+
+    /* 3D perspective floor */
+    background:
+        linear-gradient(rgba(20,255,55,.16) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(20,255,55,.16) 1px,transparent 1px);
+    background-size:70px 70px;
+    transform:
+        perspective(650px)
+        rotateX(64deg)
+        scale(1.35);
+    transform-origin:center bottom;
+    opacity:.45;
+    filter:drop-shadow(0 0 8px rgba(0,255,60,.35));
+}
+
+.space-bg{
+    position:absolute;
+    inset:0;
+    z-index:1;
+    pointer-events:none;
+    overflow:hidden;
+    perspective:1200px;
+}
+
+.space-core{
+    position:absolute;
+    left:50%;
+    top:56%;
+    width:280px;
+    height:280px;
+    transform:translate(-50%,-50%);
+    border-radius:50%;
+    background:
+        radial-gradient(circle,
+            #fff 0 2%,
+            #efff9a 5%,
+            rgba(255,230,0,.65) 12%,
+            rgba(0,255,70,.28) 30%,
+            transparent 68%);
+    box-shadow:
+        0 0 20px #fff,
+        0 0 55px #dfff00,
+        0 0 120px rgba(0,255,50,.75),
+        0 0 220px rgba(0,255,50,.35);
+    animation:corePulse 3.5s ease-in-out infinite;
+}
+
+.space-ring{
+    position:absolute;
+    left:50%;
+    top:54%;
+    width:980px;
+    height:360px;
+    transform:translate(-50%,-50%) rotateX(66deg) rotateZ(-13deg);
+    border:3px solid #ffd000;
+    border-radius:50%;
+    box-shadow:
+        0 0 8px #ffd000,
+        0 0 20px #ffd000,
+        0 0 45px rgba(255,190,0,.75),
+        inset 0 0 18px rgba(255,210,0,.35);
+    animation:ringSpin 16s linear infinite;
+}
+
+.space-ring:before,
+.space-ring:after{
+    content:"";
+    position:absolute;
+    inset:7%;
+    border:1px solid rgba(255,255,120,.65);
+    border-radius:50%;
+    box-shadow:0 0 12px rgba(255,210,0,.7);
+}
+
+.space-ring:after{
+    inset:20%;
+    border-color:rgba(0,255,80,.7);
+    box-shadow:0 0 15px rgba(0,255,80,.8);
+}
+
+.space-ring-2{
+    position:absolute;
+    left:50%;
+    top:49%;
+    width:800px;
+    height:280px;
+    transform:translate(-50%,-50%) rotateX(70deg) rotateZ(18deg);
+    border:2px solid #20ff3a;
+    border-radius:50%;
+    box-shadow:
+        0 0 10px #20ff3a,
+        0 0 30px rgba(0,255,60,.8);
+    animation:ringSpinReverse 11s linear infinite;
+}
+
+.space-ring-3{
+    position:absolute;
+    left:50%;
+    top:58%;
+    width:1150px;
+    height:410px;
+    transform:translate(-50%,-50%) rotateX(73deg) rotateZ(-4deg);
+    border:1px solid rgba(0,255,70,.7);
+    border-radius:50%;
+    box-shadow:0 0 25px rgba(0,255,70,.55);
+    animation:ringFloat 9s ease-in-out infinite alternate;
+}
+
+.space-beam{
+    position:absolute;
+    top:10%;
+    bottom:18%;
+    width:3px;
+    border-radius:50%;
+    background:linear-gradient(
+        to bottom,
+        transparent,
+        rgba(0,255,70,.05),
+        #19ff38,
+        #ffffb0,
+        #19ff38,
+        rgba(0,255,70,.05),
+        transparent
+    );
+    box-shadow:
+        0 0 8px #19ff38,
+        0 0 22px rgba(0,255,70,.8);
+    opacity:.65;
+    animation:beamPulse 2.8s ease-in-out infinite;
+}
+
+.beam1{left:38%;}
+.beam2{left:51%;animation-delay:.8s;}
+.beam3{left:66%;animation-delay:1.5s;}
+
+.energy-wave{
+    position:absolute;
+    left:-10%;
+    width:120%;
+    height:170px;
+    border:2px solid rgba(0,255,70,.65);
+    border-left-color:transparent;
+    border-right-color:transparent;
+    border-radius:50%;
+    filter:blur(.2px) drop-shadow(0 0 12px rgba(0,255,60,.7));
+    transform:rotate(-7deg);
+    animation:waveMove 8s ease-in-out infinite alternate;
+}
+
+.wave1{top:37%;}
+.wave2{top:48%;animation-delay:2s;opacity:.55;}
+.wave3{top:64%;animation-delay:4s;opacity:.4;}
+
+.floating-particle{
+    position:absolute;
+    width:5px;
+    height:5px;
+    border-radius:50%;
+    background:#dfff00;
+    box-shadow:0 0 8px #fff,0 0 20px #ffd000;
+    animation:particleFloat 6s ease-in-out infinite;
+}
+
+.p1{left:18%;top:24%;}
+.p2{left:30%;top:42%;animation-delay:1s;}
+.p3{left:72%;top:29%;animation-delay:2s;}
+.p4{left:84%;top:54%;animation-delay:3s;}
+.p5{left:57%;top:18%;animation-delay:4s;}
+.p6{left:42%;top:73%;animation-delay:2.5s;}
+
+@keyframes starsMove{
+    from{transform:translate3d(0,0,0);}
+    to{transform:translate3d(-35px,25px,0);}
+}
+
+@keyframes starsGlow{
+    from{opacity:.55;}
+    to{opacity:1;}
+}
+
+@keyframes corePulse{
+    0%,100%{transform:translate(-50%,-50%) scale(.86);opacity:.72;}
+    50%{transform:translate(-50%,-50%) scale(1.12);opacity:1;}
+}
+
+@keyframes ringSpin{
+    from{transform:translate(-50%,-50%) rotateX(66deg) rotateZ(-13deg) rotate(0deg);}
+    to{transform:translate(-50%,-50%) rotateX(66deg) rotateZ(-13deg) rotate(360deg);}
+}
+
+@keyframes ringSpinReverse{
+    from{transform:translate(-50%,-50%) rotateX(70deg) rotateZ(18deg) rotate(360deg);}
+    to{transform:translate(-50%,-50%) rotateX(70deg) rotateZ(18deg) rotate(0deg);}
+}
+
+@keyframes ringFloat{
+    from{transform:translate(-50%,-50%) rotateX(73deg) rotateZ(-4deg) scale(.94);}
+    to{transform:translate(-50%,-50%) rotateX(73deg) rotateZ(5deg) scale(1.05);}
+}
+
+@keyframes beamPulse{
+    0%,100%{opacity:.25;filter:blur(1px);}
+    50%{opacity:.95;filter:blur(0);}
+}
+
+@keyframes waveMove{
+    from{transform:translateY(-25px) rotate(-7deg) scaleX(.96);}
+    to{transform:translateY(25px) rotate(5deg) scaleX(1.04);}
+}
+
+@keyframes particleFloat{
+    0%,100%{transform:translate3d(0,0,0) scale(.7);opacity:.35;}
+    50%{transform:translate3d(25px,-35px,0) scale(1.35);opacity:1;}
+}
+
+.container{
+    width:calc(100% - 40px);
+    max-width:1500px;
+    margin:auto;
+    position:relative;
+    z-index:2;
+}
+
+/* HEADER */
+
+header{
+    margin-top:18px;
+    min-height:108px;
+
+    border:1px solid #19ff2f;
+    border-radius:16px;
+
+    box-shadow:
+        0 0 5px #19ff2f,
+        0 0 15px rgba(0,255,50,.4);
+
+    background:rgba(0,0,0,.82);
+
+    display:flex;
+    align-items:center;
+    padding:0 28px;
+}
+
+.logo{
+    width:205px;
+    flex-shrink:0;
+    text-align:center;
+}
+
+.crown{
+    color:#ffd000;
+    font-size:30px;
+    line-height:25px;
+}
+
+.logo-name{
+    color:#ffd000;
+    font-family:Georgia,serif;
+    font-size:27px;
+    margin-top:3px;
+}
+
+.tagline{
+    font-size:11px;
+    letter-spacing:5px;
+    margin-top:5px;
+}
+
+nav{
+    display:flex;
+    align-items:center;
+    gap:38px;
+    margin-left:35px;
+    flex:1;
+}
+
+nav a{
+    color:#eee;
+    text-decoration:none;
+    font-size:17px;
+    white-space:nowrap;
+    padding:42px 0 20px;
+    position:relative;
+    cursor:pointer;
+}
+
+nav a:hover,
+nav a.active{
+    color:#16ff36;
+}
+
+nav a.active:after{
+    content:"";
+    position:absolute;
+    height:3px;
+    width:52px;
+    background:#19ff37;
+    bottom:13px;
+    left:50%;
+    transform:translateX(-50%);
+    box-shadow:0 0 8px #19ff37;
+}
+
+/* SEARCH */
+
+.search-box{
+    width:218px;
+    height:55px;
+
+    border:1px solid #18ff38;
+    border-radius:13px;
+
+    display:flex;
+    align-items:center;
+
+    padding:0 14px;
+    flex-shrink:0;
+}
+
+.search-icon{
+    width:22px;
+    height:22px;
+
+    border:2px solid white;
+    border-radius:50%;
+
+    position:relative;
+    margin-right:10px;
+}
+
+.search-icon:after{
+    content:"";
+    position:absolute;
+
+    width:8px;
+    height:2px;
+
+    background:white;
+
+    transform:rotate(45deg);
+
+    right:-6px;
+    bottom:0;
+}
+
+.search-box input{
+    width:100%;
+    background:transparent;
+    border:0;
+    outline:0;
+    color:white;
+}
+
+.header-icons{
+    display:flex;
+    align-items:center;
+    margin-left:18px;
+    height:55px;
+}
+
+.icon-button{
+    width:72px;
+    height:55px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    border-left:1px solid rgba(40,255,60,.4);
+
+    cursor:pointer;
+}
+
+.categories{
+    width:48px;
+    height:48px;
+
+    border:1px solid #19ff38;
+    border-radius:50%;
+
+    display:grid;
+
+    grid-template-columns:repeat(2,10px);
+    grid-template-rows:repeat(2,10px);
+
+    justify-content:center;
+    align-content:center;
+
+    gap:5px;
+}
+
+.categories span{
+    border:2px solid white;
+    border-radius:4px;
+}
+
+.plus{
+    position:relative;
+    width:30px;
+    height:30px;
+}
+
+.plus:before,
+.plus:after{
+    content:"";
+    position:absolute;
+    background:#ffd000;
+
+    left:50%;
+    top:50%;
+
+    transform:translate(-50%,-50%);
+}
+
+.plus:before{
+    width:30px;
+    height:3px;
+}
+
+.plus:after{
+    width:3px;
+    height:30px;
+}
+
+.hamburger{
+    width:32px;
+}
+
+.hamburger span{
+    display:block;
+    height:3px;
+    background:#ffd000;
+    margin:6px 0;
+}
+
+/* HERO */
+
+.hero{
+    height:560px;
+    position:relative;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    perspective:1200px;
+    background:transparent;
+}
+
+/* SINGLE BIG 4D ORBIT RING */
+.spiral{
+    width:920px;
+    height:330px;
+    border:3px solid #ffd000;
+    border-radius:50%;
+    position:absolute;
+    left:50%;
+    top:54%;
+    transform:translate(-50%,-50%) rotateX(66deg) rotateY(-7deg) rotateZ(-10deg);
+    transform-style:preserve-3d;
+    box-shadow:
+        0 0 8px #ffd000,
+        0 0 20px #ffd000,
+        0 0 45px rgba(255,200,0,.65),
+        inset 0 0 12px rgba(255,210,0,.25);
+    animation:singleRingMove 12s ease-in-out infinite alternate;
+}
+
+.spiral::before{
+    content:"";
+    position:absolute;
+    inset:6%;
+    border:1px solid rgba(255,255,150,.55);
+    border-radius:50%;
+    box-shadow:0 0 10px rgba(255,210,0,.45);
+}
+
+.spiral::after{
+    content:"";
+    position:absolute;
+    inset:19%;
+    border:1px solid rgba(0,255,80,.55);
+    border-radius:50%;
+    box-shadow:0 0 12px rgba(0,255,80,.55);
+}
+
+@keyframes singleRingMove{
+    0%{
+        transform:translate(-50%,-50%) rotateX(62deg) rotateY(-12deg) rotateZ(-9deg) translate3d(-25px,8px,0) scale(.96);
+    }
+    50%{
+        transform:translate(-50%,-50%) rotateX(69deg) rotateY(7deg) rotateZ(-2deg) translate3d(0,-8px,35px) scale(1.02);
+    }
+    100%{
+        transform:translate(-50%,-50%) rotateX(64deg) rotateY(15deg) rotateZ(6deg) translate3d(25px,6px,0) scale(.98);
+    }
+}
+
+/* CONTENT */
+
+.content{
+    min-height:300px;
+    padding:30px 0;
+}
+
+.page-section{
+    display:none;
+}
+
+.page-section.active{
+    display:block;
+}
+
+.section-title{
+    color:#16ff37;
+    font-size:30px;
+    margin-bottom:25px;
+}
+
+.media-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.add-media{
+    background:transparent;
+    color:#ffd000;
+
+    border:1px solid #ffd000;
+    padding:12px 20px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+}
+
+.add-media:hover{
+    background:#ffd000;
+    color:#000;
+}
+
+.add-box{
+    display:none;
+
+    margin-bottom:25px;
+    padding:20px;
+
+    border:1px solid #19ff38;
+    border-radius:14px;
+
+    background:rgba(0,0,0,.85);
+}
+
+.add-box.show{
+    display:block;
+}
+
+.add-title{
+    color:#ffd000;
+    font-size:20px;
+    margin-bottom:15px;
+}
+
+.add-row{
+    display:flex;
+    gap:10px;
+    margin-bottom:12px;
+}
+
+.add-row input,
+.add-row textarea{
+    flex:1;
+
+    background:#050505;
+
+    border:1px solid #555;
+    border-radius:8px;
+
+    padding:12px;
+
+    color:white;
+    outline:none;
+}
+
+.add-row textarea{
+    min-height:130px;
+}
+
+.add-row button{
+    background:#19ff38;
+    border:0;
+    border-radius:8px;
+
+    padding:12px 20px;
+
+    cursor:pointer;
+}
+
+.or{
+    text-align:center;
+    color:#888;
+    margin:10px 0;
+}
+
+.no-media{
+    border:1px solid rgba(0,255,50,.4);
+    border-radius:15px;
+
+    padding:45px;
+
+    text-align:center;
+
+    color:#aaa;
+
+    background:rgba(0,0,0,.45);
+}
+
+/* CARDS */
+
+.music-list,
+.video-list{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.music-card,
+.video-card,
+.file-card{
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:15px;
+
+    border:1px solid rgba(0,255,50,.5);
+    border-radius:12px;
+
+    background:rgba(0,0,0,.7);
+}
+
+.music-info,
+.video-info,
+.file-info{
+    flex:1;
+    min-width:0;
+}
+
+.music-name,
+.video-name,
+.file-name{
+    font-size:17px;
+    margin-bottom:5px;
+    word-break:break-word;
+}
+
+.music-type,
+.video-type,
+.file-meta{
+    color:#999;
+    font-size:12px;
+}
+
+.music-actions,
+.video-actions,
+.gallery-actions,
+.file-actions,
+.note-actions{
+    display:flex;
+    gap:7px;
+    flex-wrap:wrap;
+}
+
+.music-actions button,
+.video-actions button,
+.gallery-actions button,
+.file-actions button,
+.note-actions button{
+    border:1px solid #19ff38;
+
+    background:transparent;
+
+    color:white;
+
+    padding:8px 10px;
+
+    border-radius:7px;
+
+    cursor:pointer;
+}
+
+.music-actions button:hover,
+.video-actions button:hover,
+.gallery-actions button:hover,
+.file-actions button:hover,
+.note-actions button:hover{
+    background:#19ff38;
+    color:#000;
+}
+
+.video-card{
+    align-items:flex-start;
+}
+
+.video-player{
+    width:100%;
+    max-height:500px;
+
+    margin-top:12px;
+
+    border-radius:10px;
+
+    background:#000;
+}
+
+/* GALLERY */
+
+.gallery-list{
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fill,minmax(220px,1fr));
+
+    gap:18px;
+}
+
+.gallery-card{
+    border:1px solid rgba(0,255,50,.5);
+
+    border-radius:14px;
+
+    background:rgba(0,0,0,.7);
+
+    overflow:hidden;
+}
+
+.gallery-image{
+    width:100%;
+    height:220px;
+
+    object-fit:cover;
+
+    display:block;
+
+    cursor:pointer;
+}
+
+.gallery-info{
+    padding:12px;
+}
+
+.gallery-name{
+    font-size:16px;
+    margin-bottom:5px;
+
+    word-break:break-word;
+}
+
+.gallery-type{
+    color:#999;
+
+    font-size:12px;
+
+    margin-bottom:10px;
+}
+
+/* FILE MANAGER */
+
+.file-toolbar{
+    display:flex;
+    gap:10px;
+
+    flex-wrap:wrap;
+
+    margin-bottom:20px;
+}
+
+.file-toolbar select,
+.file-toolbar input{
+    background:#050505;
+
+    color:white;
+
+    border:1px solid #19ff38;
+
+    border-radius:8px;
+
+    padding:11px 12px;
+}
+
+.file-toolbar input{
+    flex:1;
+}
+
+.file-stats{
+    display:grid;
+
+    grid-template-columns:
+    repeat(4,1fr);
+
+    gap:12px;
+
+    margin-bottom:20px;
+}
+
+.stat-card{
+    border:1px solid rgba(0,255,50,.5);
+
+    border-radius:12px;
+
+    padding:18px;
+
+    background:rgba(0,0,0,.65);
+}
+
+.stat-number{
+    color:#ffd000;
+
+    font-size:25px;
+
+    font-weight:bold;
+}
+
+.stat-label{
+    color:#aaa;
+
+    margin-top:5px;
+
+    font-size:13px;
+}
+
+.file-category-tabs{
+    display:flex;
+
+    gap:8px;
+
+    flex-wrap:wrap;
+
+    margin-bottom:20px;
+}
+
+.file-category-tabs button{
+    background:transparent;
+
+    color:white;
+
+    border:1px solid #19ff38;
+
+    padding:9px 14px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+}
+
+.file-category-tabs button.active{
+    background:#19ff38;
+
+    color:#000;
+}
+
+.file-list{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.file-icon{
+    width:58px;
+    height:58px;
+
+    flex-shrink:0;
+
+    border:1px solid #ffd000;
+
+    border-radius:12px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-size:27px;
+
+    background:#080808;
+}
+
+/* NOTES */
+
+.notes-list{
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fill,minmax(260px,1fr));
+
+    gap:15px;
+}
+
+.note-card{
+    border:1px solid rgba(0,255,50,.5);
+
+    border-radius:13px;
+
+    padding:17px;
+
+    background:rgba(0,0,0,.7);
+}
+
+.note-title{
+    color:#ffd000;
+
+    font-size:18px;
+
+    margin-bottom:10px;
+}
+
+.note-content{
+    color:#ddd;
+
+    line-height:1.6;
+
+    white-space:pre-wrap;
+
+    word-break:break-word;
+}
+
+.note-date{
+    color:#777;
+
+    font-size:11px;
+
+    margin:12px 0;
+}
+
+/* PREVIEW */
+
+.preview-modal{
+    display:none;
+
+    position:fixed;
+
+    z-index:9999;
+
+    inset:0;
+
+    background:rgba(0,0,0,.94);
+
+    justify-content:center;
+    align-items:center;
+
+    padding:20px;
+}
+
+.preview-modal.show{
+    display:flex;
+}
+
+.preview-modal img,
+.preview-modal video{
+    max-width:95%;
+    max-height:90vh;
+
+    border-radius:10px;
+}
+
+.preview-close{
+    position:absolute;
+
+    right:25px;
+    top:15px;
+
+    color:white;
+
+    font-size:38px;
+
+    cursor:pointer;
+}
+
+/* FOOTER */
+
+footer{
+    border:1px solid #19ff38;
+
+    border-radius:16px 16px 0 0;
+
+    background:rgba(0,0,0,.9);
+
+    box-shadow:
+        0 0 10px rgba(0,255,50,.4);
+}
+
+.footer-main{
+    display:grid;
+
+    grid-template-columns:
+    1.4fr 1fr 1fr 1fr 1.2fr;
+
+    padding:20px 40px;
+}
+
+.footer-column{
+    padding:0 25px;
+
+    border-right:
+    1px solid rgba(30,255,50,.45);
+}
+
+.footer-column:last-child{
+    border-right:0;
+}
+
+.footer-title{
+    color:#18ff39;
+
+    font-size:18px;
+
+    margin-bottom:15px;
+}
+
+.footer-logo{
+    text-align:center;
+}
+
+.footer-text{
+    color:#ddd;
+
+    line-height:1.8;
+
+    font-size:14px;
+
+    margin-top:15px;
+}
+
+.footer-links{
+    list-style:none;
+}
+
+.footer-links li{
+    margin:10px 0;
+
+    color:#ddd;
+}
+
+.footer-links li:before{
+    content:"›";
+
+    color:#ffd000;
+
+    margin-right:12px;
+}
+
+.contact-item{
+    margin:18px 0;
+
+    color:#ddd;
+}
+
+.social{
+    display:flex;
+
+    gap:12px;
+
+    margin-top:15px;
+}
+
+.social span{
+    width:38px;
+    height:38px;
+
+    border:1px solid #19ff38;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    color:#ffd000;
+
+    font-weight:bold;
+}
+
+.copyright{
+    border-top:
+    1px solid rgba(30,255,50,.4);
+
+    padding:17px;
+
+    text-align:center;
+
+    color:#ddd;
+}
+
+
+/* =====================================================
+   MENU SYSTEM
+===================================================== */
+
+.menu-overlay{
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:10000;
+
+    background:rgba(0,0,0,.75);
+
+    backdrop-filter:blur(5px);
+}
+
+.menu-overlay.show{
+    display:block;
+}
+
+.side-menu{
+    position:absolute;
+
+    right:12px;
+    top:12px;
+
+    width:min(430px,calc(100% - 24px));
+
+    max-height:calc(100vh - 24px);
+
+    overflow:auto;
+
+    background:#050505;
+
+    border:1px solid #19ff38;
+
+    border-radius:18px;
+
+    box-shadow:
+        0 0 25px rgba(0,255,50,.5);
+
+    padding:14px;
+}
+
+.menu-head{
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    border-bottom:
+    1px solid #244;
+
+    padding:6px 4px 14px;
+}
+
+.menu-head h2{
+    color:#ffd000;
+}
+
+.close-menu{
+    font-size:30px;
+
+    cursor:pointer;
+}
+
+.menu-user{
+    padding:13px;
+
+    border:1px solid #333;
+
+    border-radius:12px;
+
+    margin:12px 0;
+
+    background:#0a0a0a;
+}
+
+.menu-user strong{
+    color:#19ff38;
+}
+
+.menu-item{
+    width:100%;
+
+    border:1px solid #222;
+
+    background:#080808;
+
+    color:white;
+
+    padding:14px;
+
+    border-radius:10px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    margin:7px 0;
+
+    cursor:pointer;
+
+    text-align:left;
+
+    font-size:15px;
+}
+
+.menu-item:hover{
+    border-color:#19ff38;
+
+    background:#101810;
+}
+
+.menu-icon{
+    width:30px;
+
+    text-align:center;
+
+    font-size:20px;
+}
+
+.menu-section{
+    color:#777;
+
+    font-size:11px;
+
+    margin:16px 5px 7px;
+
+    text-transform:uppercase;
+
+    letter-spacing:1px;
+}
+
+
+/* MENU PANELS */
+
+.menu-panel{
+    display:none;
+    position:fixed;
+    z-index:10001;
+    top:12px;
+    right:calc(min(430px, calc(100vw - 24px)) + 28px);
+    width:min(430px, calc(100vw - 24px));
+    max-height:calc(100vh - 24px);
+    overflow:auto;
+    padding:18px;
+    border:1px solid #19ff38;
+    border-radius:16px;
+    background:rgba(3,3,3,.97);
+    box-shadow:
+        0 0 12px #19ff38,
+        0 0 35px rgba(0,255,50,.35);
+}
+
+.menu-panel.show{
+    display:block;
+    animation:panelSlideLeft .22s ease-out;
+}
+
+@keyframes panelSlideLeft{
+    from{opacity:0;transform:translateX(18px) scale(.98);}
+    to{opacity:1;transform:translateX(0) scale(1);}
+}
+
+/* THREE-DOT ACTION MENU */
+.media-actions-wrap{
+    position:relative;
+    display:inline-flex;
+}
+
+.more-button{
+    min-width:44px !important;
+    width:44px;
+    height:38px;
+    padding:5px 10px !important;
+    font-size:22px;
+    letter-spacing:2px;
+}
+
+.more-menu{
+    display:none;
+    position:absolute;
+    right:0;
+    bottom:calc(100% + 8px);
+    min-width:180px;
+    z-index:5000;
+    padding:7px;
+    border:1px solid #19ff38;
+    border-radius:12px;
+    background:#050505;
+    box-shadow:0 0 18px rgba(0,255,50,.45);
+}
+
+.more-menu.show{
+    display:block;
+    animation:moreMenuIn .16s ease-out;
+}
+
+.hidden-more-menu{
+    right:0;
+    left:auto;
+    top:calc(100% + 6px);
+    bottom:auto;
+    min-width:190px;
+    z-index:10001;
+}
+
+.more-menu button{
+    width:100%;
+    margin:3px 0;
+    text-align:left;
+}
+
+/* MENU ITEM ACTIONS */
+.menu-list-item{
+    border:1px solid #244;
+    border-radius:10px;
+    padding:10px;
+    margin:7px 0;
+    background:#070707;
+}
+
+.menu-list-name{
+    color:white;
+    word-break:break-word;
+    margin-bottom:7px;
+}
+
+.menu-list-actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+}
+
+.menu-list-actions button{
+    background:transparent;
+    color:white;
+    border:1px solid #19ff38;
+    border-radius:7px;
+    padding:6px 9px;
+    cursor:pointer;
+}
+
+.menu-list-actions button:hover{
+    background:#19ff38;
+    color:#000;
+}
+
+.menu-list-actions .danger-btn{
+    border-color:#ff4545;
+}
+
+.menu-list-actions .danger-btn:hover{
+    background:#ff4545;
+    color:#fff;
+}
+
+.hidden-lock-note{
+    color:#ffd000;
+    font-size:12px;
+    margin:8px 0;
+}
+
+@keyframes moreMenuIn{
+    from{opacity:0;transform:translateY(7px);}
+    to{opacity:1;transform:translateY(0);}
+}
+
+@media(max-width:900px){
+    .menu-panel{
+        right:12px;
+        left:12px;
+        width:auto;
+        top:12px;
+        max-height:calc(100vh - 24px);
+    }
+}
+
+.panel-title{
+    color:#ffd000;
+
+    font-size:20px;
+
+    margin-bottom:12px;
+}
+
+.panel-row{
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:11px 0;
+
+    border-bottom:1px solid #222;
+}
+
+.panel-row:last-child{
+    border-bottom:0;
+}
+
+.panel-btn{
+    border:1px solid #19ff38;
+
+    background:transparent;
+
+    color:white;
+
+    padding:8px 11px;
+
+    border-radius:7px;
+
+    cursor:pointer;
+}
+
+.panel-btn:hover{
+    background:#19ff38;
+
+    color:#000;
+}
+
+.danger-btn{
+    border-color:#ff4545;
+
+    color:#ff7070;
+}
+
+
+/* ACCOUNT */
+
+.avatar{
+    width:50px;
+    height:50px;
+
+    border-radius:50%;
+
+    border:2px solid #19ff38;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:24px;
+
+    color:#ffd000;
+}
+
+
+/* AI */
+
+.ai-chat{
+    height:260px;
+
+    overflow:auto;
+
+    padding:10px;
+
+    background:#000;
+
+    border:1px solid #222;
+
+    border-radius:10px;
+
+    margin-bottom:10px;
+}
+
+.ai-msg{
+    padding:9px 11px;
+
+    border-radius:9px;
+
+    margin:7px 0;
+
+    max-width:90%;
+}
+
+.ai-msg.user{
+    background:#103a16;
+
+    margin-left:auto;
+}
+
+.ai-msg.bot{
+    background:#151515;
+
+    border:1px solid #19ff38;
+}
+
+.ai-input{
+    display:flex;
+
+    gap:7px;
+}
+
+.ai-input input{
+    flex:1;
+
+    background:#080808;
+
+    color:white;
+
+    border:1px solid #555;
+
+    border-radius:8px;
+
+    padding:11px;
+}
+
+
+/* CALCULATOR */
+
+.calc-display{
+    width:100%;
+
+    background:#000;
+
+    color:#19ff38;
+
+    border:1px solid #19ff38;
+
+    padding:15px;
+
+    border-radius:8px;
+
+    text-align:right;
+
+    font-size:25px;
+
+    margin-bottom:10px;
+}
+
+.calc-grid{
+    display:grid;
+
+    grid-template-columns:
+    repeat(4,1fr);
+
+    gap:7px;
+}
+
+.calc-grid button{
+    padding:15px 5px;
+
+    border:1px solid #333;
+
+    background:#111;
+
+    color:white;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    font-size:16px;
+}
+
+.calc-grid button:hover{
+    background:#19ff38;
+
+    color:#000;
+}
+
+
+/* SAVED ITEMS */
+
+.saved-item{
+    padding:10px;
+
+    border-bottom:1px solid #222;
+
+    color:#ddd;
+}
+
+.empty-menu{
+    color:#777;
+
+    text-align:center;
+
+    padding:15px;
+}
+
+
+/* SETTINGS */
+
+.setting-toggle{
+    width:48px;
+    height:25px;
+
+    border-radius:20px;
+
+    border:1px solid #19ff38;
+
+    background:#111;
+
+    position:relative;
+
+    cursor:pointer;
+}
+
+.setting-toggle:after{
+    content:"";
+
+    position:absolute;
+
+    width:19px;
+    height:19px;
+
+    border-radius:50%;
+
+    background:#777;
+
+    left:2px;
+    top:2px;
+
+    transition:.2s;
+}
+
+.setting-toggle.on:after{
+    left:25px;
+
+    background:#19ff38;
+}
+
+
+/* RESPONSIVE */
+
+@media(max-width:1100px){
+
+header{
+    padding:0 15px;
+}
+
+nav{
+    gap:18px;
+    margin-left:15px;
+}
+
+nav a{
+    font-size:14px;
+}
+
+.search-box{
+    width:170px;
+}
+
+.logo{
+    width:165px;
+}
+
+.logo-name{
+    font-size:22px;
+}
+
+.file-stats{
+    grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+@media(max-width:850px){
+
+.container{
+    width:calc(100% - 20px);
+}
+
+header{
+    min-height:85px;
+
+    flex-wrap:wrap;
+
+    padding:10px;
+
+    gap:10px;
+}
+
+.logo{
+    width:auto;
+
+    flex:1;
+}
+
+nav{
+    order:3;
+
+    width:100%;
+
+    overflow-x:auto;
+
+    margin:0;
+
+    gap:25px;
+}
+
+nav a{
+    padding:12px 0 15px;
+
+    font-size:14px;
+}
+
+.search-box{
+    width:190px;
+}
+
+.hero{
+    height:430px;
+}
+
+.spiral{
+    width:550px;
+    height:270px;
+}
+
+.spiral2{
+    width:500px;
+}
+
+.footer-main{
+    grid-template-columns:1fr 1fr;
+
+    padding:20px 10px;
+}
+
+}
+
+
+@media(max-width:600px){
+    .space-core{
+        width:180px;
+        height:180px;
+    }
+
+    .space-ring{
+        width:620px;
+        height:240px;
+    }
+
+    .space-ring-2{
+        width:520px;
+        height:190px;
+    }
+
+    .space-ring-3{
+        width:720px;
+        height:270px;
+    }
+
+    .page:after{
+        background-size:45px 45px;
+        opacity:.3;
+    }
+}
+
+@media(max-width:600px){
+
+.container{
+    width:calc(100% - 12px);
+}
+
+.logo{
+    text-align:left;
+}
+
+.crown{
+    font-size:22px;
+}
+
+.logo-name{
+    font-size:18px;
+}
+
+.tagline{
+    font-size:7px;
+
+    letter-spacing:3px;
+}
+
+.search-box{
+    width:100%;
+
+    order:2;
+
+    height:43px;
+}
+
+.header-icons{
+    order:1;
+}
+
+nav{
+    order:4;
+
+    gap:24px;
+}
+
+nav a{
+    font-size:13px;
+}
+
+.hero{
+    height:330px;
+}
+
+.spiral{
+    width:400px;
+    height:200px;
+}
+
+.spiral2{
+    width:350px;
+    height:170px;
+}
+
+.footer-main{
+    grid-template-columns:1fr;
+}
+
+.footer-column{
+    border-right:0;
+
+    border-bottom:
+    1px solid rgba(30,255,50,.3);
+
+    padding:20px 10px;
+}
+
+.media-top{
+    flex-direction:column;
+
+    align-items:flex-start;
+
+    gap:15px;
+}
+
+.add-row{
+    flex-direction:column;
+}
+
+.music-card,
+.video-card,
+.file-card{
+    flex-direction:column;
+
+    align-items:flex-start;
+}
+
+.file-actions{
+    width:100%;
+}
+
+.gallery-list{
+    grid-template-columns:1fr 1fr;
+
+    gap:10px;
+}
+
+.gallery-image{
+    height:150px;
+}
+
+.file-stats{
+    grid-template-columns:1fr 1fr;
+}
+
+}
+
+@media(max-width:400px){
+
+.gallery-list{
+    grid-template-columns:1fr;
+}
+
+.gallery-image{
+    height:220px;
+}
+
+.file-stats{
+    grid-template-columns:1fr;
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+<div class="space-bg" aria-hidden="true">
+    <div class="space-core"></div>
+    <div class="space-ring"></div>
+    <div class="space-ring-2"></div>
+    <div class="space-ring-3"></div>
+
+    <div class="space-beam beam1"></div>
+    <div class="space-beam beam2"></div>
+    <div class="space-beam beam3"></div>
+
+    <div class="energy-wave wave1"></div>
+    <div class="energy-wave wave2"></div>
+    <div class="energy-wave wave3"></div>
+
+    <span class="floating-particle p1"></span>
+    <span class="floating-particle p2"></span>
+    <span class="floating-particle p3"></span>
+    <span class="floating-particle p4"></span>
+    <span class="floating-particle p5"></span>
+    <span class="floating-particle p6"></span>
+</div>
+
+<div class="container">
+
+<header>
+
+<div class="logo">
+<div class="crown">♕</div>
+<div class="logo-name">RK OFFICIAL</div>
+<div class="tagline">PRIVATE LIMITED.</div>
+</div>
+
+<nav>
+
+<a class="active" onclick="showPage('home',this)">HOME</a>
+<a onclick="showPage('music',this)">MUSIC</a>
+<a onclick="showPage('video',this)">VIDEO</a>
+<a onclick="showPage('products',this)">PRODUCTS</a>
+<a onclick="showPage('gallery',this)">GALLERY</a>
+<a onclick="showPage('files',this)">FILES</a>
+<a onclick="showPage('downloads',this)">DOWNLOADS</a>
+
+</nav>
+
+<div class="search-box">
+
+<div class="search-icon"></div>
+
+<input
+id="searchInput"
+placeholder="Search here..."
+oninput="searchWebsite()">
+
+</div>
+
+<div class="header-icons">
+
+<div class="icon-button"
+onclick="showPage('categories')">
+
+<div class="categories">
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+</div>
+
+</div>
+
+<div class="icon-button"
+onclick="openAddMenu()">
+
+<div class="plus"></div>
+
+</div>
+
+<div class="icon-button"
+onclick="toggleMenu()">
+
+<div class="hamburger">
+<span></span>
+<span></span>
+<span></span>
+</div>
+
+</div>
+
+</div>
+
+</header>
+
+
+<section class="hero">
+
+<div class="spiral"></div>
+<div class="spiral2"></div>
+<div class="center-light"></div>
+
+</section>
+
+
+<main class="content">
+
+<section id="home" class="page-section active">
+</section>
+
+
+<section id="music" class="page-section">
+
+<div class="media-top">
+
+<h2 class="section-title">Music</h2>
+
+<button class="add-media"
+onclick="openMusicAdd()">
+
++ Add Music
+
+</button>
+
+</div>
+
+<div id="musicAddBox" class="add-box">
+
+<div class="add-title">
+Add Music
+</div>
+
+<div class="add-row">
+
+<input
+type="file"
+id="musicFile"
+accept="audio/*">
+
+<button onclick="addMusicFile()">
+Add File
+</button>
+
+</div>
+
+<div class="or">OR</div>
+
+<div class="add-row">
+
+<input
+type="url"
+id="musicURL"
+placeholder="Paste music URL here...">
+
+<button onclick="addMusicURL()">
+Add Link
+</button>
+
+</div>
+
+</div>
+
+<div id="musicList" class="music-list"></div>
+
+</section>
+
+
+<section id="video" class="page-section">
+
+<div class="media-top">
+
+<h2 class="section-title">
+Video
+</h2>
+
+<button class="add-media"
+onclick="openVideoAdd()">
++ Add Video
+</button>
+
+</div>
+
+<div id="videoAddBox" class="add-box">
+
+<div class="add-title">
+Add Video
+</div>
+
+<div class="add-row">
+
+<input
+type="file"
+id="videoFile"
+accept="video/*">
+
+<button onclick="addVideoFile()">
+Add File
+</button>
+
+</div>
+
+<div class="or">OR</div>
+
+<div class="add-row">
+
+<input
+type="url"
+id="videoURL"
+placeholder="Paste video URL here...">
+
+<button onclick="addVideoURL()">
+Add Link
+</button>
+
+</div>
+
+</div>
+
+<div id="videoList"
+class="video-list"></div>
+
+</section>
+
+
+<section id="products" class="page-section">
+
+<h2 class="section-title">
+Products
+</h2>
+
+<div class="no-media">
+Products section
+</div>
+
+</section>
+
+
+<section id="gallery" class="page-section">
+
+<div class="media-top">
+
+<h2 class="section-title">
+Gallery
+</h2>
+
+<button class="add-media"
+onclick="openGalleryAdd()">
++ Add Image
+</button>
+
+</div>
+
+<div id="galleryAddBox" class="add-box">
+
+<div class="add-title">
+Add Image
+</div>
+
+<div class="add-row">
+
+<input
+type="file"
+id="galleryFile"
+accept="image/*">
+
+<button onclick="addGalleryFile()">
+Add Image
+</button>
+
+</div>
+
+<div class="or">
+OR
+</div>
+
+<div class="add-row">
+
+<input
+type="url"
+id="galleryURL"
+placeholder="Paste image URL here...">
+
+<button onclick="addGalleryURL()">
+Add Link
+</button>
+
+</div>
+
+</div>
+
+<div id="galleryList"
+class="gallery-list"></div>
+
+</section>
+
+
+<section id="files" class="page-section">
+
+<div class="media-top">
+
+<h2 class="section-title">
+Files
+</h2>
+
+<button class="add-media"
+onclick="openFileAdd()">
++ Add File
+</button>
+
+</div>
+
+<div id="fileAddBox"
+class="add-box">
+
+<div class="add-title">
+Add File
+</div>
+
+<div class="add-row">
+
+<input
+type="file"
+id="fileInput">
+
+<button onclick="addLocalFile()">
+Add File
+</button>
+
+</div>
+
+<div class="or">
+OR
+</div>
+
+<div class="add-row">
+
+<input
+type="url"
+id="fileURL"
+placeholder="Paste file/document URL here...">
+
+<button onclick="addFileURL()">
+Add Link
+</button>
+
+</div>
+
+</div>
+
+<div class="file-stats">
+
+<div class="stat-card">
+
+<div id="totalFiles"
+class="stat-number">
+0
+</div>
+
+<div class="stat-label">
+Total Files
+</div>
+
+</div>
+
+<div class="stat-card">
+
+<div id="documentCount"
+class="stat-number">
+0
+</div>
+
+<div class="stat-label">
+Documents
+</div>
+
+</div>
+
+<div class="stat-card">
+
+<div id="noteCount"
+class="stat-number">
+0
+</div>
+
+<div class="stat-label">
+Notes
+</div>
+
+</div>
+
+<div class="stat-card">
+
+<div id="otherCount"
+class="stat-number">
+0
+</div>
+
+<div class="stat-label">
+Other Files
+</div>
+
+</div>
+
+</div>
+
+<div class="file-category-tabs">
+
+<button class="active"
+onclick="filterFiles('all',this)">
+📁 All
+</button>
+
+<button onclick="filterFiles('document',this)">
+📄 Documents
+</button>
+
+<button onclick="filterFiles('spreadsheet',this)">
+📊 Spreadsheets
+</button>
+
+<button onclick="filterFiles('presentation',this)">
+📑 Presentations
+</button>
+
+<button onclick="filterFiles('archive',this)">
+📦 Archives
+</button>
+
+<button onclick="filterFiles('other',this)">
+📁 Other
+</button>
+
+</div>
+
+<div class="file-toolbar">
+
+<input
+id="fileSearch"
+placeholder="Search files..."
+oninput="renderFiles()">
+
+<select
+id="fileSort"
+onchange="renderFiles()">
+
+<option value="newest">
+Newest First
+</option>
+
+<option value="oldest">
+Oldest First
+</option>
+
+<option value="name">
+Name A-Z
+</option>
+
+<option value="size">
+Largest First
+</option>
+
+</select>
+
+</div>
+
+<div id="fileList"
+class="file-list"></div>
+
+</section>
+
+
+<section id="notes" class="page-section">
+
+<div class="media-top">
+
+<h2 class="section-title">
+Notes
+</h2>
+
+<button class="add-media"
+onclick="openNoteAdd()">
++ New Note
+</button>
+
+</div>
+
+<div id="noteAddBox"
+class="add-box">
+
+<div class="add-title">
+Create Note
+</div>
+
+<div class="add-row">
+
+<input
+id="noteTitle"
+placeholder="Note title...">
+
+</div>
+
+<div class="add-row">
+
+<textarea
+id="noteText"
+placeholder="Write your note here..."></textarea>
+
+</div>
+
+<div class="add-row">
+
+<button onclick="saveNote()">
+Save Note
+</button>
+
+</div>
+
+</div>
+
+<div id="notesList"
+class="notes-list"></div>
+
+</section>
+
+
+<section id="downloads" class="page-section">
+
+<h2 class="section-title">
+Downloads
+</h2>
+
+<div class="no-media">
+Downloaded files will appear here.
+</div>
+
+</section>
+
+
+<section id="categories" class="page-section">
+
+<h2 class="section-title">
+Categories
+</h2>
+
+<div class="no-media">
+Use the categories button to explore website sections.
+</div>
+
+</section>
+
+</main>
+
+
+<footer>
+
+<div class="footer-main">
+
+<div class="footer-column">
+
+<div class="footer-logo">
+
+<div class="crown">♕</div>
+
+<div class="logo-name">
+RK OFFICIAL
+</div>
+
+<div class="tagline">
+PRIVATE LTD.
+</div>
+
+</div>
+
+<p class="footer-text">
+
+Your website is ready with
+music, video, files, gallery,
+notes and smart menu features.
+
+</p>
+
+<div class="social">
+
+<span>f</span>
+<span>◎</span>
+<span>𝕏</span>
+<span>▶</span>
+<span>in</span>
+
+</div>
+
+</div>
+
+
+<div class="footer-column">
+
+<div class="footer-title">
+QUICK LINKS
+</div>
+
+<ul class="footer-links">
+
+<li>Home</li>
+<li>Music</li>
+<li>Video</li>
+<li>Products</li>
+<li>Gallery</li>
+<li>Files</li>
+<li>Downloads</li>
+
+</ul>
+
+</div>
+
+
+<div class="footer-column">
+
+<div class="footer-title">
+OUR SERVICES
+</div>
+
+<ul class="footer-links">
+
+<li>Web Design</li>
+<li>Development</li>
+<li>Digital Marketing</li>
+<li>SEO Optimization</li>
+<li>Branding</li>
+<li>Support</li>
+
+</ul>
+
+</div>
+
+
+<div class="footer-column">
+
+<div class="footer-title">
+USEFUL LINKS
+</div>
+
+<ul class="footer-links">
+
+<li>Privacy</li>
+<li>Terms</li>
+<li>Refund Policy</li>
+<li>FAQ</li>
+<li>Security</li>
+<li>Account</li>
+
+</ul>
+
+</div>
+
+
+<div class="footer-column">
+
+<div class="footer-title">
+CONTACT US
+</div>
+
+<div class="contact-item">
+☎ +91 6306289802
+</div>
+
+<div class="contact-item">
+✉ rkofficialpvt.ltd@gmail.com
+</div>
+
+<div class="contact-item">
+♧ Presidency University, Itagalapura,<br>
+&nbsp;&nbsp;City-Banglore,INDIA
+</div>
+
+</div>
+
+</div>
+
+<div class="copyright">
+
+❈━━━━━━━━
+© 2026 Your Company. All Rights Reserved.
+━━━━━━━━❈
+
+</div>
+
+</footer>
+
+</div>
+</div>
+
+
+<!-- =====================================================
+MENU
+===================================================== -->
+
+<div id="menuOverlay"
+class="menu-overlay"
+onclick="closeMenuOutside(event)">
+
+<div class="side-menu">
+
+<div class="menu-head">
+
+<h2>
+☰ Menu
+</h2>
+
+<div
+class="close-menu"
+onclick="toggleMenu()">
+×
+</div>
+
+</div>
+
+
+<div class="menu-user">
+
+<strong>
+👤 My Account
+</strong>
+
+<br><br>
+
+<span id="accountName">
+Guest User
+</span>
+
+</div>
+
+
+<div class="menu-section">
+ACCOUNT
+</div>
+
+<button class="menu-item"
+onclick="openPanel('accountPanel')">
+
+<span class="menu-icon">
+👤
+</span>
+
+<span>
+Account
+</span>
+
+</button>
+
+
+<button class="menu-item"
+onclick="openPanel('accountCenterPanel')">
+
+<span class="menu-icon">
+🏠
+</span>
+
+<span>
+Account Center
+</span>
+
+</button>
+
+
+<div class="menu-section">
+PERSONAL
+</div>
+
+
+<button class="menu-item"
+onclick="openPanel('savedPanel')">
+
+<span class="menu-icon">
+🔖
+</span>
+
+<span>
+Save
+</span>
+
+<span id="savedCount">
+0
+</span>
+
+</button>
+
+
+<button class="menu-item"
+onclick="openPanel('favoritePanel')">
+
+<span class="menu-icon">
+⭐
+</span>
+
+<span>
+Favourite
+</span>
+
+<span id="favoriteCount">
+0
+</span>
+
+</button>
+
+
+<button class="menu-item"
+onclick="openPanel('archivePanel')">
+
+<span class="menu-icon">
+🗄️
+</span>
+
+<span>
+Archive
+</span>
+
+<span id="archiveCount">
+0
+</span>
+
+</button>
+
+
+<button class="menu-item"
+onclick="openPanel('historyPanel')">
+
+<span class="menu-icon">
+🕘
+</span>
+
+<span>
+History
+</span>
+
+</button>
+
+
+<div class="menu-section">
+SMART TOOLS
+</div>
+
+
+<button class="menu-item"
+onclick="openPanel('aiPanel')">
+
+<span class="menu-icon">
+🤖
+</span>
+
+<span>
+AI Mode
+</span>
+
+</button>
+
+
+<button class="menu-item"
+onclick="openPanel('calculatorPanel')">
+
+<span class="menu-icon">
+🧮
+</span>
+
+<span>
+Calculator
+</span>
+
+</button>
+
+
+<div class="menu-section">
+CONTROL
+</div>
+
+
+<button class="menu-item"
+onclick="openPanel('privacyPanel')">
+
+<span class="menu-icon">
+🔒
+</span>
+
+<span>
+Privacy
+</span>
+
+</button>
+
+
+<button class="menu-item"
+onclick="openPanel('safetyPanel')">
+
+<span class="menu-icon">
+🛡️
+</span>
+
+<span>
+Safety
+</span>
+
+</button>
+
+
+<button class="menu-item"
+onclick="openPanel('languagePanel')">
+
+<span class="menu-icon">
+🌐
+</span>
+
+<span>
+Language
+</span>
+
+</button>
+
+
+<button class="menu-item"
+onclick="openPanel('settingsPanel')">
+
+<span class="menu-icon">
+⚙️
+</span>
+
+<span>
+Settings
+</span>
+
+</button>
+
+<button class="menu-item"
+onclick="openPanel('deletePanel')">
+
+<span class="menu-icon">
+🗑️
+</span>
+
+<span>
+Delete
+</span>
+
+<span id="deletedCount">
+0
+</span>
+
+</button>
+
+<button class="menu-item"
+onclick="openPanel('hiddenPanel')">
+
+<span class="menu-icon">
+🔐
+</span>
+
+<span>
+Hidden
+</span>
+
+<span id="hiddenCount">
+0
+</span>
+
+</button>
+
+
+<!-- ACCOUNT -->
+
+<!-- DELETE / RECENTLY DELETED -->
+<div id="deletePanel"
+class="menu-panel">
+
+<div class="panel-title">
+🗑️ Delete
+</div>
+
+<p style="color:#999;font-size:13px;margin-bottom:12px">
+Deleted items stay here until you clear or delete them.
+</p>
+
+<div id="deletedList"></div>
+
+<button
+class="panel-btn danger-btn"
+onclick="clearDeleted()">
+
+Clear Deleted List
+
+</button>
+
+</div>
+
+
+<!-- HIDDEN / ENCRYPTED VAULT -->
+<div id="hiddenPanel"
+class="menu-panel">
+
+<div class="panel-title" style="display:flex;align-items:center;justify-content:space-between;gap:10px">
+    <span>🔐 Hidden Vault</span>
+    <div style="position:relative">
+        <button class="more-button" onclick="toggleHiddenMore(event)" aria-label="Hidden options">⋮</button>
+        <div id="hiddenMoreMenu" class="more-menu hidden-more-menu">
+            <button onclick="changeHiddenCode();closeHiddenMore()">🔑 Change Password</button>
+            <button onclick="lockHiddenVault();closeHiddenMore()">🔒 Lock Vault</button>
+        </div>
+    </div>
+</div>
+
+<p style="color:#999;font-size:13px;margin-bottom:12px">
+Hidden items are protected by your private code. The code is not stored in plain text.
+</p>
+
+<!-- This setup box is visible only before the first password is created. -->
+<div id="hiddenSetupBox">
+<input id="hiddenCodeInput" type="password" placeholder="Create hidden password" style="width:100%;padding:11px;background:#080808;color:white;border:1px solid #555;border-radius:8px;margin-bottom:8px">
+<input id="hiddenCodeConfirm" type="password" placeholder="Confirm hidden password" style="width:100%;padding:11px;background:#080808;color:white;border:1px solid #555;border-radius:8px;margin-bottom:8px">
+<button class="panel-btn" onclick="setupHiddenCode()">Set Password</button>
+</div>
+
+<!-- After setup, only this unlock box is shown until the correct password is entered. -->
+<div id="hiddenUnlockBox" style="margin-top:12px">
+<input id="hiddenUnlockInput" type="password" placeholder="Enter your hidden password" style="width:100%;padding:11px;background:#080808;color:white;border:1px solid #555;border-radius:8px;margin-bottom:8px">
+<button class="panel-btn" onclick="unlockHiddenVault()">Unlock Hidden</button>
+</div>
+
+<div id="hiddenVaultStatus" style="color:#19ff38;font-size:12px;margin-top:10px"></div>
+
+<div id="hiddenList" style="margin-top:12px"></div>
+
+</div>
+
+<!-- ACCOUNT -->
+<div id="accountPanel"
+class="menu-panel">
+
+<div class="panel-title">
+👤 Account
+</div>
+
+<div style="display:flex;gap:12px;align-items:center">
+
+<div class="avatar">
+👤
+</div>
+
+<div>
+
+<strong id="profileName">
+Guest User
+</strong>
+
+<br>
+
+<small>
+Free Account
+</small>
+
+</div>
+
+</div>
+
+<br>
+
+<input
+id="profileNameInput"
+class="ai-input"
+style="width:100%;padding:11px;background:#080808;color:white;border:1px solid #555;border-radius:8px"
+placeholder="Enter your name">
+
+<br><br>
+
+<button
+class="panel-btn"
+onclick="updateAccount()">
+
+Save Account
+
+</button>
+
+</div>
+
+
+<!-- ACCOUNT CENTER -->
+
+<div id="accountCenterPanel"
+class="menu-panel">
+
+<div class="panel-title">
+🏠 Account Center
+</div>
+
+<div class="panel-row">
+<span>Profile</span>
+<button class="panel-btn"
+onclick="openPanel('accountPanel')">
+Open
+</button>
+</div>
+
+<div class="panel-row">
+<span>Saved Items</span>
+<span id="centerSaved">
+0
+</span>
+</div>
+
+<div class="panel-row">
+<span>Favourite Items</span>
+<span id="centerFav">
+0
+</span>
+</div>
+
+<div class="panel-row">
+<span>Archive Items</span>
+<span id="centerArchive">
+0
+</span>
+</div>
+
+<div class="panel-row">
+<span>History</span>
+<span id="centerHistory">
+0
+</span>
+</div>
+
+</div>
+
+
+<!-- SAVE -->
+
+<div id="savedPanel"
+class="menu-panel">
+
+<div class="panel-title">
+🔖 Saved
+</div>
+
+<div id="savedList"></div>
+
+<button
+class="panel-btn danger-btn"
+onclick="clearSaved()">
+
+Clear Saved
+
+</button>
+
+</div>
+
+
+<!-- FAVOURITE -->
+
+<div id="favoritePanel"
+class="menu-panel">
+
+<div class="panel-title">
+⭐ Favourite
+</div>
+
+<div id="favoriteList"></div>
+
+<button
+class="panel-btn danger-btn"
+onclick="clearFavorites()">
+
+Clear Favourite
+
+</button>
+
+</div>
+
+
+<!-- ARCHIVE -->
+
+<div id="archivePanel"
+class="menu-panel">
+
+<div class="panel-title">
+🗄️ Archive
+</div>
+
+<div id="archiveList"></div>
+
+<button
+class="panel-btn danger-btn"
+onclick="clearArchive()">
+
+Clear Archive
+
+</button>
+
+</div>
+
+
+<!-- HISTORY -->
+
+<div id="historyPanel"
+class="menu-panel">
+
+<div class="panel-title">
+🕘 History
+</div>
+
+<div id="historyList"></div>
+
+<button
+class="panel-btn danger-btn"
+onclick="clearHistory()">
+
+Clear History
+
+</button>
+
+</div>
+
+
+<!-- AI -->
+
+<div id="aiPanel"
+class="menu-panel">
+
+<div class="panel-title">
+🤖 AI Mode
+</div>
+
+<div class="ai-chat"
+id="aiChat">
+
+<div class="ai-msg bot">
+
+Hello! I am your website AI assistant.
+
+Ask me about:
+
+Files, Music, Video, Notes,
+Saved, Favourite, Archive,
+History, Privacy or Calculator.
+
+</div>
+
+</div>
+
+<div class="ai-input">
+
+<input
+id="aiInput"
+placeholder="Ask something..."
+onkeydown="if(event.key==='Enter')askAI()">
+
+<button
+class="panel-btn"
+onclick="askAI()">
+
+Send
+
+</button>
+
+</div>
+
+</div>
+
+
+<!-- CALCULATOR -->
+
+<div id="calculatorPanel"
+class="menu-panel">
+
+<div class="panel-title">
+🧮 Calculator
+</div>
+
+<input
+id="calcDisplay"
+class="calc-display"
+value="0"
+readonly>
+
+<div class="calc-grid">
+
+<button onclick="calcAdd('7')">7</button>
+<button onclick="calcAdd('8')">8</button>
+<button onclick="calcAdd('9')">9</button>
+<button onclick="calcAdd('/')">÷</button>
+
+<button onclick="calcAdd('4')">4</button>
+<button onclick="calcAdd('5')">5</button>
+<button onclick="calcAdd('6')">6</button>
+<button onclick="calcAdd('*')">×</button>
+
+<button onclick="calcAdd('1')">1</button>
+<button onclick="calcAdd('2')">2</button>
+<button onclick="calcAdd('3')">3</button>
+<button onclick="calcAdd('-')">−</button>
+
+<button onclick="calcAdd('0')">0</button>
+<button onclick="calcAdd('.')">.</button>
+<button onclick="calcEqual()">=</button>
+<button onclick="calcAdd('+')">+</button>
+
+<button onclick="calcClear()">
+C
+</button>
+
+<button onclick="calcBack()">
+⌫
+</button>
+
+<button onclick="calcAdd('%')">
+%
+</button>
+
+</div>
+
+</div>
+
+
+<!-- PRIVACY -->
+
+<div id="privacyPanel"
+class="menu-panel">
+
+<div class="panel-title">
+🔒 Privacy
+</div>
+
+<div class="panel-row">
+
+<span>
+Private Mode
+</span>
+
+<div
+id="privacyToggle"
+class="setting-toggle"
+onclick="togglePrivacy()">
+</div>
+
+</div>
+
+<div class="panel-row">
+
+<span>
+Search History
+</span>
+
+<button
+class="panel-btn"
+onclick="clearHistory()">
+
+Clear
+
+</button>
+
+</div>
+
+<p style="color:#888;font-size:12px;margin-top:12px">
+
+Privacy settings control local website
+data stored in this browser.
+
+</p>
+
+</div>
+
+
+<!-- SAFETY -->
+
+<div id="safetyPanel"
+class="menu-panel">
+
+<div class="panel-title">
+🛡️ Safety
+</div>
+
+<div class="panel-row">
+
+<span>
+Safe Mode
+</span>
+
+<div
+id="safeToggle"
+class="setting-toggle on"
+onclick="toggleSafe()">
+</div>
+
+</div>
+
+<div class="panel-row">
+
+<span>
+Confirm Before Delete
+</span>
+
+<div
+id="deleteToggle"
+class="setting-toggle on"
+onclick="toggleDeleteConfirm()">
+</div>
+
+</div>
+
+<p style="color:#888;font-size:12px;margin-top:12px">
+
+Safety mode helps prevent accidental
+actions and unwanted deletion.
+
+</p>
+
+</div>
+
+
+<!-- LANGUAGE -->
+
+<div id="languagePanel"
+class="menu-panel">
+
+<div class="panel-title">
+🌐 Language
+</div>
+
+<div class="panel-row">
+
+<span>
+English
+</span>
+
+<button
+class="panel-btn"
+onclick="setLanguage('English')">
+Select
+</button>
+
+</div>
+
+<div class="panel-row">
+
+<span>
+Hindi
+</span>
+
+<button
+class="panel-btn"
+onclick="setLanguage('Hindi')">
+Select
+</button>
+
+</div>
+
+<div class="panel-row">
+
+<span>
+Hinglish
+</span>
+
+<button
+class="panel-btn"
+onclick="setLanguage('Hinglish')">
+Select
+</button>
+
+</div>
+
+<div id="languageStatus"
+style="color:#19ff38;margin-top:12px">
+
+Current: English
+
+</div>
+
+</div>
+
+
+<!-- SETTINGS -->
+
+<div id="settingsPanel"
+class="menu-panel">
+
+<div class="panel-title">
+⚙️ Settings
+</div>
+
+<div class="panel-row">
+
+<span>
+Auto Save
+</span>
+
+<div
+id="autoSaveToggle"
+class="setting-toggle on"
+onclick="toggleAutoSave()">
+</div>
+
+</div>
+
+<div class="panel-row">
+
+<span>
+Animations
+</span>
+
+<div
+id="animationToggle"
+class="setting-toggle on"
+onclick="toggleAnimations()">
+</div>
+
+</div>
+
+<div class="panel-row">
+
+<span>
+Reset Website Data
+</span>
+
+<button
+class="panel-btn danger-btn"
+onclick="resetWebsite()">
+
+Reset
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- PREVIEW -->
+
+<div id="previewModal"
+class="preview-modal"
+onclick="closePreview(event)">
+
+<div
+class="preview-close"
+onclick="closePreview()">
+
+×
+
+</div>
+
+<div id="previewContent"></div>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   DATA / PERMANENT STORAGE
+===================================================== */
+
+let musicItems=[];
+let videoItems=[];
+let galleryItems=[];
+let fileItems=[];
+let notes=[];
+let currentFileFilter="all";
+let calcExpr="";
+let hiddenItems=[];
+let hiddenUnlocked=false;
+
+let state={
+    saved:[],
+    favorites:[],
+    archive:[],
+    history:[],
+    deleted:[],
+    hiddenVault:{configured:false,salt:null,iv:null,data:null},
+    account:{name:"Guest User"},
+    privacy:{privateMode:false},
+    safety:{safeMode:true,deleteConfirm:true},
+    settings:{autoSave:true,animations:true},
+    language:"English"
+};
+
+const MEDIA_DB_NAME="RK_OFFICIAL_MEDIA_DB";
+const MEDIA_STORE="blobs";
+
+function openMediaDB(){
+    return new Promise((resolve,reject)=>{
+        const req=indexedDB.open(MEDIA_DB_NAME,1);
+        req.onupgradeneeded=()=>{
+            if(!req.result.objectStoreNames.contains(MEDIA_STORE)){
+                req.result.createObjectStore(MEDIA_STORE);
+            }
+        };
+        req.onsuccess=()=>resolve(req.result);
+        req.onerror=()=>reject(req.error);
+    });
+}
+
+async function putMediaBlob(key,blob){
+    const db=await openMediaDB();
+    return new Promise((resolve,reject)=>{
+        const tx=db.transaction(MEDIA_STORE,"readwrite");
+        tx.objectStore(MEDIA_STORE).put(blob,key);
+        tx.oncomplete=()=>{db.close();resolve();};
+        tx.onerror=()=>{db.close();reject(tx.error);};
+    });
+}
+
+async function getMediaBlob(key){
+    const db=await openMediaDB();
+    return new Promise((resolve,reject)=>{
+        const tx=db.transaction(MEDIA_STORE,"readonly");
+        const req=tx.objectStore(MEDIA_STORE).get(key);
+        req.onsuccess=()=>resolve(req.result||null);
+        req.onerror=()=>reject(req.error);
+        tx.oncomplete=()=>db.close();
+    });
+}
+
+async function deleteMediaBlob(key){
+    if(!key)return;
+    const db=await openMediaDB();
+    return new Promise((resolve,reject)=>{
+        const tx=db.transaction(MEDIA_STORE,"readwrite");
+        tx.objectStore(MEDIA_STORE).delete(key);
+        tx.oncomplete=()=>{db.close();resolve();};
+        tx.onerror=()=>{db.close();reject(tx.error);};
+    });
+}
+
+function makeMediaKey(type,id){
+    return "media:"+type+":"+id;
+}
+
+function mediaCollections(){
+    return {music:musicItems,video:videoItems,gallery:galleryItems,file:fileItems,note:notes};
+}
+
+function serializeMedia(){
+    return {
+        musicItems:musicItems.map(x=>({...x,url:x.storageKey?"":x.url})),
+        videoItems:videoItems.map(x=>({...x,url:x.storageKey?"":x.url})),
+        galleryItems:galleryItems.map(x=>({...x,url:x.storageKey?"":x.url})),
+        fileItems:fileItems.map(x=>({...x,url:x.storageKey?"":x.url})),
+        notes:notes
+    };
+}
+
+function saveState(){
+    /* Media is intentionally persisted regardless of the Auto Save toggle. */
+    try{
+        const data={...state,media:serializeMedia()};
+        localStorage.setItem("yourLogoWebsiteState",JSON.stringify(data));
+    }catch(e){
+        console.error("Could not save website data",e);
+    }
+}
+
+async function restoreMedia(){
+    const saved=JSON.parse(localStorage.getItem("yourLogoWebsiteState")||"null");
+    if(saved && saved.media){
+        musicItems=saved.media.musicItems||[];
+        videoItems=saved.media.videoItems||[];
+        galleryItems=saved.media.galleryItems||[];
+        fileItems=saved.media.fileItems||[];
+        notes=saved.media.notes||[];
+    }
+
+    const all=[
+        [musicItems,"music"],[videoItems,"video"],[galleryItems,"gallery"],[fileItems,"file"]
+    ];
+
+    for(const [list,type] of all){
+        for(const item of list){
+            if(item.storageKey){
+                try{
+                    const blob=await getMediaBlob(item.storageKey);
+                    if(blob){
+                        item.url=URL.createObjectURL(blob);
+                    }else{
+                        item.url="";
+                    }
+                }catch(e){
+                    console.warn("Could not restore",item.name,e);
+                }
+            }
+        }
+    }
+}
+
+async function persistLocalItem(type,item,file){
+    item.storageKey=makeMediaKey(type,item.id);
+    await putMediaBlob(item.storageKey,file);
+    item.url=URL.createObjectURL(file);
+    saveState();
+}
+
+function loadState(){
+    try{
+        let saved=localStorage.getItem("yourLogoWebsiteState");
+        if(saved){
+            let data=JSON.parse(saved);
+            state={...state,...data,
+                account:{...state.account,...(data.account||{})},
+                privacy:{...state.privacy,...(data.privacy||{})},
+                safety:{...state.safety,...(data.safety||{})},
+                settings:{...state.settings,...(data.settings||{})},
+                hiddenVault:{...state.hiddenVault,...(data.hiddenVault||{})}
+            };
+        }
+    }catch(e){console.log(e);}
+
+    document.getElementById("accountName").innerText=state.account.name;
+    document.getElementById("profileName").innerText=state.account.name;
+    document.getElementById("languageStatus").innerText="Current: "+state.language;
+    updateToggles();
+}
+
+/* =====================================================
+   ENCRYPTED HIDDEN VAULT
+===================================================== */
+
+function bytesToB64(bytes){
+    let binary="";
+    bytes.forEach(b=>binary+=String.fromCharCode(b));
+    return btoa(binary);
+}
+
+function b64ToBytes(str){
+    const binary=atob(str);
+    const bytes=new Uint8Array(binary.length);
+    for(let i=0;i<binary.length;i++)bytes[i]=binary.charCodeAt(i);
+    return bytes;
+}
+
+async function deriveHiddenKey(code,salt){
+    const base=await crypto.subtle.importKey("raw",new TextEncoder().encode(code),"PBKDF2",false,["deriveKey"]);
+    return crypto.subtle.deriveKey({name:"PBKDF2",salt,iterations:120000,hash:"SHA-256"},base,{name:"AES-GCM",length:256},false,["encrypt","decrypt"]);
+}
+
+async function encryptHiddenItems(items,code){
+    if(!window.crypto?.subtle)throw new Error("Web Crypto is unavailable. Open the site on HTTPS or localhost.");
+    const salt=crypto.getRandomValues(new Uint8Array(16));
+    const iv=crypto.getRandomValues(new Uint8Array(12));
+    const key=await deriveHiddenKey(code,salt);
+    const plain=new TextEncoder().encode(JSON.stringify(items));
+    const cipher=await crypto.subtle.encrypt({name:"AES-GCM",iv},key,plain);
+    state.hiddenVault={configured:true,salt:bytesToB64(salt),iv:bytesToB64(iv),data:bytesToB64(new Uint8Array(cipher))};
+    saveState();
+}
+
+async function decryptHiddenItems(code){
+    if(!state.hiddenVault?.configured || !state.hiddenVault.data)return [];
+    const salt=b64ToBytes(state.hiddenVault.salt);
+    const iv=b64ToBytes(state.hiddenVault.iv);
+    const key=await deriveHiddenKey(code,salt);
+    const cipher=b64ToBytes(state.hiddenVault.data);
+    const plain=await crypto.subtle.decrypt({name:"AES-GCM",iv},key,cipher);
+    const items=JSON.parse(new TextDecoder().decode(plain));
+
+    /* Migrate older hidden records: blob URLs expire after refresh, while
+       storageKey points to the permanent IndexedDB copy. */
+    return (Array.isArray(items)?items:[]).map(record=>{
+        if(record?.item?.storageKey){
+            record.item.url="";
+        }
+        return record;
+    });
+}
+
+function updateHiddenPanelUI(){
+    const configured=!!state.hiddenVault?.configured;
+    const setup=document.getElementById("hiddenSetupBox");
+    const unlock=document.getElementById("hiddenUnlockBox");
+    const list=document.getElementById("hiddenList");
+    const more=document.getElementById("hiddenMoreMenu");
+    if(!setup||!unlock)return;
+
+    // Once a password exists, never show the setup/change-password form here.
+    setup.style.display=configured?"none":"block";
+    unlock.style.display=configured && !hiddenUnlocked?"block":"none";
+    if(more)more.style.display=configured?"":"none";
+
+    if(!configured){
+        list.innerHTML="";
+    }
+}
+
+function toggleHiddenMore(event){
+    if(event)event.stopPropagation();
+    const menu=document.getElementById("hiddenMoreMenu");
+    if(!menu)return;
+    menu.classList.toggle("show");
+}
+
+function closeHiddenMore(){
+    document.getElementById("hiddenMoreMenu")?.classList.remove("show");
+}
+
+async function changeHiddenCode(){
+    closeHiddenMore();
+    if(!state.hiddenVault?.configured){
+        alert("Set your hidden password first.");
+        return;
+    }
+    const oldCode=prompt("Enter your current hidden password:");
+    if(oldCode===null)return;
+    const newCode=prompt("Enter your new hidden password (minimum 4 characters):");
+    if(newCode===null)return;
+    if(newCode.length<4){alert("Password must be at least 4 characters.");return;}
+    const confirmCode=prompt("Confirm your new hidden password:");
+    if(confirmCode===null)return;
+    if(newCode!==confirmCode){alert("Passwords do not match.");return;}
+
+    try{
+        const oldItems=await decryptHiddenItems(oldCode);
+        await encryptHiddenItems(oldItems,newCode);
+        hiddenItems=oldItems;
+        hiddenUnlocked=true;
+        window.hiddenVaultCode=newCode;
+        document.getElementById("hiddenVaultStatus").innerText="Password changed successfully.";
+        updateHiddenPanelUI();
+        renderHiddenList();
+        saveState();
+    }catch(e){
+        hiddenUnlocked=false;
+        window.hiddenVaultCode=null;
+        alert("Current password is incorrect.");
+        updateHiddenPanelUI();
+    }
+}
+
+async function setupHiddenCode(){
+    const code=document.getElementById("hiddenCodeInput").value;
+    const confirmCode=document.getElementById("hiddenCodeConfirm").value;
+    if(!code || code.length<4){alert("Code must be at least 4 characters.");return;}
+    if(code!==confirmCode){alert("Codes do not match.");return;}
+    try{
+        let old=[];
+        if(state.hiddenVault.configured){
+            const oldCode=prompt("Enter your current hidden code to change it:");
+            if(!oldCode)return;
+            old=await decryptHiddenItems(oldCode);
+        }
+        await encryptHiddenItems(old,code);
+        hiddenItems=old;
+        hiddenUnlocked=true;
+        window.hiddenVaultCode=code;
+        document.getElementById("hiddenVaultStatus").innerText="Password set successfully.";
+        updateHiddenPanelUI();
+        renderHiddenList();
+    }catch(e){alert("Could not set/change the hidden code. Current code may be wrong.");}
+}
+
+async function unlockHiddenVault(){
+    if(!state.hiddenVault.configured){
+        alert("First set a hidden code.");
+        return;
+    }
+    const code=document.getElementById("hiddenUnlockInput").value;
+    if(!code){alert("Enter your code.");return;}
+    try{
+        hiddenItems=await decryptHiddenItems(code);
+        hiddenUnlocked=true;
+        window.hiddenVaultCode=code;
+        document.getElementById("hiddenVaultStatus").innerText="Unlocked.";
+        updateHiddenPanelUI();
+        renderHiddenList();
+    }catch(e){
+        hiddenUnlocked=false;
+        window.hiddenVaultCode=null;
+        updateHiddenPanelUI();
+        alert("Wrong password or corrupted hidden data.");
+    }
+}
+
+function lockHiddenVault(){
+    hiddenUnlocked=false;
+    hiddenItems=[];
+    window.hiddenVaultCode=null;
+    document.getElementById("hiddenList").innerHTML="";
+    document.getElementById("hiddenVaultStatus").innerText="Locked.";
+    updateHiddenPanelUI();
+}
+
+
+async function hideItem(type,id,name){
+    const list=mediaCollections()[type];
+    if(!list)return;
+    const item=list.find(x=>String(x.id)===String(id));
+    if(!item)return;
+
+    let code=window.hiddenVaultCode;
+    if(!state.hiddenVault.configured){
+        code=prompt("Set a new hidden code (minimum 4 characters):");
+        if(!code || code.length<4){alert("A 4+ character code is required.");return;}
+        const confirmCode=prompt("Confirm hidden code:");
+        if(code!==confirmCode){alert("Codes do not match.");return;}
+        try{await encryptHiddenItems([],code);}catch(e){alert(e.message);return;}
+        hiddenUnlocked=true;
+        window.hiddenVaultCode=code;
+        hiddenItems=[];
+    }else if(!hiddenUnlocked){
+        /*
+           HIDE must work directly from the item's three-dot menu.
+           The user does NOT need to open/unlock the Hidden panel first.
+           Because the vault is encrypted, ask for the existing password only
+           when the vault is locked, verify it, perform the hide, and then
+           immediately lock the vault again.
+        */
+        const enteredCode=prompt("Enter your hidden password to hide this item:");
+        if(enteredCode===null)return;
+        if(!enteredCode){alert("Enter your hidden password.");return;}
+        try{
+            // Load the existing encrypted hidden items before adding this one.
+            // This prevents older hidden items from being overwritten when the
+            // vault is locked and Hide is used directly from a three-dot menu.
+            hiddenItems=await decryptHiddenItems(enteredCode);
+            code=enteredCode;
+        }catch(e){
+            alert("Wrong hidden password. The item was not hidden.");
+            return;
+        }
+    }
+
+    /*
+       IMPORTANT: object URLs (blob:...) are temporary browser-memory URLs.
+       Never put them inside the encrypted hidden vault. Keep the permanent
+       IndexedDB storageKey instead, and rebuild the object URL when needed.
+    */
+    const safe={...item};
+    if(safe.storageKey){
+        safe.url="";
+    }
+
+    if(!hiddenItems.some(x=>x.type===type && String(x.id)===String(id))){
+        hiddenItems.unshift({type,id,name,item:safe,date:Date.now()});
+    }
+
+    list.splice(list.indexOf(item),1);
+    await encryptHiddenItems(hiddenItems,code);
+
+    /* If the vault was locked before this hide operation, keep it locked.
+       Hiding should never silently open the Hidden panel. */
+    if(state.hiddenVault.configured && !hiddenUnlocked){
+        window.hiddenVaultCode=null;
+    }
+
+    saveState();
+    renderAllMedia();
+    renderMenuLists();
+    if(hiddenUnlocked)renderHiddenList();
+    history("Hidden "+type+": "+name);
+}
+
+async function unhideItem(index){
+    if(!hiddenUnlocked)return;
+    const record=hiddenItems[index];
+    if(!record)return;
+
+    const item={...record.item};
+
+    /* Recreate a fresh object URL from the permanent IndexedDB Blob. */
+    if(item.storageKey){
+        try{
+            const blob=await getMediaBlob(item.storageKey);
+            if(!blob){
+                alert("The stored file data could not be found. It was not unhidden.");
+                return;
+            }
+            item.url=URL.createObjectURL(blob);
+        }catch(e){
+            console.error("Could not restore hidden media",e);
+            alert("The stored file could not be restored.");
+            return;
+        }
+    }
+
+    const list=mediaCollections()[record.type];
+    if(!list){
+        alert("Unknown hidden item type.");
+        return;
+    }
+
+    const existingIndex=list.findIndex(x=>String(x.id)===String(item.id));
+    if(existingIndex>=0){
+        list[existingIndex]=item;
+    }else{
+        list.push(item);
+    }
+
+    hiddenItems.splice(index,1);
+    await encryptHiddenItems(hiddenItems,window.hiddenVaultCode);
+    saveState();
+    renderAllMedia();
+    renderMenuLists();
+    renderHiddenList();
+}
+
+async function deleteHiddenItem(index){
+    if(!hiddenUnlocked)return;
+    const record=hiddenItems[index];
+    if(!record)return;
+    if(state.safety.deleteConfirm && !confirm("Delete "+record.name+" permanently?"))return;
+    if(record.item?.storageKey)await deleteMediaBlob(record.item.storageKey);
+    hiddenItems.splice(index,1);
+    await encryptHiddenItems(hiddenItems,window.hiddenVaultCode);
+    state.deleted.unshift({type:record.type,id:record.id,name:record.name,date:Date.now()});
+    saveState();
+    renderHiddenList();
+    renderMenuLists();
+}
+
+function renderHiddenList(){
+    const el=document.getElementById("hiddenList");
+    if(!hiddenUnlocked){el.innerHTML='<div class="empty-menu">Vault is locked.</div>';return;}
+    if(!hiddenItems.length){el.innerHTML='<div class="empty-menu">No hidden items.</div>';return;}
+    el.innerHTML=hiddenItems.map((r,i)=>`
+        <div class="menu-list-item">
+            <div class="menu-list-name">🔐 ${escapeHTML(r.name)}<br><small>${r.type}</small></div>
+            <div class="menu-list-actions">
+                <button onclick="openStoredItem('${r.type}','${r.id}',true)">👁 View</button>
+                <button onclick="unhideItem(${i})">↩ Unhide</button>
+                <button class="danger-btn" onclick="deleteHiddenItem(${i})">🗑 Delete</button>
+            </div>
+        </div>`).join("");
+}
+
+function renderAllMedia(){
+    renderMusic();renderVideos();renderGallery();renderFiles();renderNotes();updateStats();
+}
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+function showPage(pageId,element){
+
+    document
+        .querySelectorAll(".page-section")
+        .forEach(section=>{
+            section.classList.remove("active");
+        });
+
+    let page=document.getElementById(pageId);
+
+    if(page){
+        page.classList.add("active");
+    }
+
+    document
+        .querySelectorAll("nav a")
+        .forEach(a=>{
+            a.classList.remove("active");
+        });
+
+    if(element){
+        element.classList.add("active");
+    }
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =====================================================
+   MENU
+===================================================== */
+
+function toggleMenu(){
+
+    document
+        .getElementById("menuOverlay")
+        .classList.toggle("show");
+
+}
+
+
+function closeMenuOutside(event){
+
+    if(
+        event.target.id==="menuOverlay"
+    ){
+
+        document
+            .getElementById("menuOverlay")
+            .classList.remove("show");
+
+    }
+
+}
+
+
+function openPanel(id){
+
+    if(id==="hiddenPanel") updateHiddenPanelUI();
+
+    document
+        .querySelectorAll(".menu-panel")
+        .forEach(panel=>{
+            panel.classList.remove("show");
+        });
+
+    document
+        .getElementById(id)
+        .classList.add("show");
+
+    renderMenuLists();
+
+}
+
+
+/* =====================================================
+   ADD MENU
+===================================================== */
+
+function openAddMenu(){
+
+    showPage("files");
+
+    openFileAdd();
+
+}
+
+
+function openMusicAdd(){
+
+    showPage("music");
+
+    document
+        .getElementById("musicAddBox")
+        .classList.toggle("show");
+
+}
+
+
+function openVideoAdd(){
+
+    showPage("video");
+
+    document
+        .getElementById("videoAddBox")
+        .classList.toggle("show");
+
+}
+
+
+function openGalleryAdd(){
+
+    showPage("gallery");
+
+    document
+        .getElementById("galleryAddBox")
+        .classList.toggle("show");
+
+}
+
+
+function openFileAdd(){
+
+    showPage("files");
+
+    document
+        .getElementById("fileAddBox")
+        .classList.toggle("show");
+
+}
+
+
+function openNoteAdd(){
+
+    showPage("notes");
+
+    document
+        .getElementById("noteAddBox")
+        .classList.toggle("show");
+
+}
+
+
+/* =====================================================
+   ACCOUNT
+===================================================== */
+
+function updateAccount(){
+
+    let name=
+        document
+        .getElementById("profileNameInput")
+        .value
+        .trim();
+
+    if(!name){
+
+        alert("Please enter your name.");
+
+        return;
+
+    }
+
+    state.account.name=name;
+
+    document
+        .getElementById("accountName")
+        .innerText=name;
+
+    document
+        .getElementById("profileName")
+        .innerText=name;
+
+    saveState();
+
+    alert("Account updated.");
+
+}
+
+
+function setLanguage(language){
+
+    state.language=language;
+
+    document
+        .getElementById("languageStatus")
+        .innerText=
+        "Current: "+language;
+
+    saveState();
+
+}
+
+
+/* =====================================================
+   SAVE / FAVOURITE / ARCHIVE
+===================================================== */
+
+function saveItem(type,id,name){
+
+    let exists=
+        state.saved.find(
+            x=>String(x.id)===String(id)
+        );
+
+    if(!exists){
+
+        state.saved.push({
+
+            id:id,
+            type:type,
+            name:name,
+            date:Date.now()
+
+        });
+
+        saveState();
+
+        renderMenuLists();
+
+        alert("Saved.");
+
+    }else{
+
+        alert("Already saved.");
+
+    }
+
+}
+
+
+function fav(type,id,name){
+
+    let exists=
+        state.favorites.find(
+            x=>String(x.id)===String(id)
+        );
+
+    if(!exists){
+
+        state.favorites.push({
+
+            id:id,
+            type:type,
+            name:name,
+            date:Date.now()
+
+        });
+
+        saveState();
+
+        renderMenuLists();
+
+        alert("Added to Favourite.");
+
+    }else{
+
+        alert("Already in Favourite.");
+
+    }
+
+}
+
+
+function arch(type,id,name){
+
+    let exists=
+        state.archive.find(
+            x=>String(x.id)===String(id)
+        );
+
+    if(!exists){
+
+        state.archive.push({
+
+            id:id,
+            type:type,
+            name:name,
+            date:Date.now()
+
+        });
+
+        saveState();
+
+        renderMenuLists();
+
+        alert("Moved to Archive.");
+
+    }else{
+
+        alert("Already archived.");
+
+    }
+
+}
+
+
+function history(text){
+
+    state.history.unshift({
+
+        text:text,
+
+        date:Date.now()
+
+    });
+
+    if(state.history.length>100){
+
+        state.history=
+            state.history.slice(0,100);
+
+    }
+
+    saveState();
+
+    renderMenuLists();
+
+}
+
+
+/* =====================================================
+   MENU LISTS
+===================================================== */
+
+function getOriginalItem(type,id){
+    const list=mediaCollections()[type]||[];
+    return list.find(x=>String(x.id)===String(id));
+}
+
+async function openStoredItem(type,id,fromHidden=false){
+    let item=getOriginalItem(type,id);
+
+    // Hidden items are removed from the normal collection, so get the
+    // encrypted copy from the unlocked vault instead of looking only in DOM.
+    if(!item && fromHidden && hiddenUnlocked){
+        const r=hiddenItems.find(x=>x.type===type && String(x.id)===String(id));
+        item=r?.item||null;
+    }
+
+    if(!item){
+        alert("This item is no longer available.");
+        return;
+    }
+
+    // Blob URLs are temporary. Always rebuild them from IndexedDB when a
+    // permanent storageKey exists. This is especially important for Hidden
+    // items after a refresh/reopen.
+    if(item.storageKey){
+        try{
+            const blob=await getMediaBlob(item.storageKey);
+            if(!blob){
+                alert("The stored file data could not be found.");
+                return;
+            }
+            item.url=URL.createObjectURL(blob);
+
+            // Keep the in-memory copy synchronized without ever persisting
+            // the temporary blob URL into localStorage/encrypted vault data.
+            if(fromHidden){
+                const r=hiddenItems.find(x=>x.type===type && String(x.id)===String(id));
+                if(r?.item)r.item.url="";
+            }
+        }catch(e){
+            console.error("Could not restore stored media",e);
+            alert("The stored file could not be opened.");
+            return;
+        }
+    }
+
+    if(!item.url){
+        alert("The stored file could not be opened.");
+        return;
+    }
+
+    // For hidden items, open the actual saved object directly. This avoids
+    // depending on an element that no longer exists in the main media list.
+    if(fromHidden){
+        if(type==="gallery"){
+            document.getElementById("previewContent").innerHTML=
+                `<img src="${item.url}" style="max-width:92vw;max-height:82vh;object-fit:contain;border-radius:12px">`;
+            document.getElementById("previewModal").classList.add("show");
+            return;
+        }
+
+        if(type==="video"){
+            document.getElementById("previewContent").innerHTML=
+                `<video src="${item.url}" controls autoplay style="max-width:92vw;max-height:82vh;border-radius:12px"></video>`;
+            document.getElementById("previewModal").classList.add("show");
+            return;
+        }
+
+        if(type==="music"){
+            document.getElementById("previewContent").innerHTML=
+                `<div style="padding:30px;text-align:center;color:white"><div style="font-size:48px">🎵</div><h3 style="margin:12px 0">${escapeHTML(item.name||"Music")}</h3><audio src="${item.url}" controls autoplay style="width:min(520px,90vw)"></audio></div>`;
+            document.getElementById("previewModal").classList.add("show");
+            return;
+        }
+
+        // Files and notes open in a separate tab/page.
+        window.open(item.url,"_blank");
+        return;
+    }
+
+    if(type==="music"||type==="video"||type==="gallery"||type==="file"||type==="note")
+        showPage(type==="file"?"files":type);
+
+    setTimeout(()=>{
+        if(type==="gallery")previewImage(id);
+        else if(type==="file")window.open(item.url,"_blank");
+        else if(type==="music")document.getElementById("audio"+id)?.play();
+        else if(type==="video")document.getElementById("video"+id)?.play();
+    },50);
+}
+
+function removeFromCollection(collection,id){
+    state[collection]=(state[collection]||[]).filter(x=>String(x.id)!==String(id));
+    saveState();renderMenuLists();
+}
+
+function renderMenuRecord(x,icon,collection,actionLabel){
+    return `<div class="menu-list-item">
+        <div class="menu-list-name">${icon} ${escapeHTML(x.name)}<br><small>${x.type}</small></div>
+        <div class="menu-list-actions">
+            <button onclick="openStoredItem('${x.type}','${x.id}')">👁 Open</button>
+            <button onclick="removeFromCollection('${collection}','${x.id}')">${actionLabel}</button>
+            <button class="danger-btn" onclick="deleteItem('${x.type}','${x.id}','${escapeHTML(x.name)}')">🗑 Delete</button>
+        </div>
+    </div>`;
+}
+
+function renderMenuLists(){
+    document.getElementById("savedCount").innerText=state.saved.length;
+    document.getElementById("favoriteCount").innerText=state.favorites.length;
+    document.getElementById("archiveCount").innerText=state.archive.length;
+    document.getElementById("deletedCount").innerText=(state.deleted||[]).length;
+    document.getElementById("hiddenCount").innerText=(state.hiddenVault?.configured?"🔐":"0");
+    document.getElementById("centerSaved").innerText=state.saved.length;
+    document.getElementById("centerFav").innerText=state.favorites.length;
+    document.getElementById("centerArchive").innerText=state.archive.length;
+    document.getElementById("centerHistory").innerText=state.history.length;
+
+    document.getElementById("savedList").innerHTML=state.saved.length?state.saved.map(x=>renderMenuRecord(x,"🔖","saved","✕ Remove")).join(""):`<div class="empty-menu">Nothing saved yet.</div>`;
+    document.getElementById("favoriteList").innerHTML=state.favorites.length?state.favorites.map(x=>renderMenuRecord(x,"⭐","favorites","✕ Remove")).join(""):`<div class="empty-menu">No favourite items.</div>`;
+    document.getElementById("archiveList").innerHTML=state.archive.length?state.archive.map(x=>renderMenuRecord(x,"🗄️","archive","↩ Unarchive")).join(""):`<div class="empty-menu">Archive is empty.</div>`;
+    document.getElementById("historyList").innerHTML=state.history.length?state.history.slice(0,30).map(x=>`<div class="menu-list-item">🕘 ${escapeHTML(x.text)}<br><small>${new Date(x.date).toLocaleString()}</small></div>`).join(""):`<div class="empty-menu">No history.</div>`;
+    document.getElementById("deletedList").innerHTML=(state.deleted||[]).length?state.deleted.slice(0,50).map(x=>`<div class="menu-list-item">🗑️ ${escapeHTML(x.name)}<br><small>${x.type} • ${new Date(x.date).toLocaleString()}</small></div>`).join(""):`<div class="empty-menu">No deleted items.</div>`;
+    if(document.getElementById("hiddenPanel").classList.contains("show"))renderHiddenList();
+}
+
+function clearDeleted(){
+
+    state.deleted=[];
+
+    saveState();
+
+    renderMenuLists();
+
+}
+
+
+function clearSaved(){
+
+    state.saved=[];
+
+    saveState();
+
+    renderMenuLists();
+
+}
+
+
+function clearFavorites(){
+
+    state.favorites=[];
+
+    saveState();
+
+    renderMenuLists();
+
+}
+
+
+function clearArchive(){
+
+    state.archive=[];
+
+    saveState();
+
+    renderMenuLists();
+
+}
+
+
+function clearHistory(){
+
+    state.history=[];
+
+    saveState();
+
+    renderMenuLists();
+
+}
+
+
+/* Close Hidden Vault three-dot menu when clicking elsewhere */
+document.addEventListener("click",function(event){
+    const menu=document.getElementById("hiddenMoreMenu");
+    if(menu && !event.target.closest("#hiddenMoreMenu") && !event.target.closest(".panel-title .more-button")){
+        menu.classList.remove("show");
+    }
+});
+
+/* =====================================================
+   THREE-DOT MENUS / DELETE
+===================================================== */
+
+function toggleMoreMenu(id,event){
+
+    if(event){
+        event.stopPropagation();
+    }
+
+    document.querySelectorAll(".more-menu.show")
+        .forEach(menu=>{
+            if(menu.id!==id){
+                menu.classList.remove("show");
+            }
+        });
+
+    document.getElementById(id)
+        ?.classList.toggle("show");
+}
+
+
+document.addEventListener("click",function(){
+
+    document.querySelectorAll(".more-menu.show")
+        .forEach(menu=>menu.classList.remove("show"));
+
+});
+
+
+async function deleteItem(type,id,name){
+    if(state.safety.deleteConfirm && !confirm("Delete "+name+"?"))return;
+    let list=mediaCollections()[type];
+    if(!list)return;
+    let index=list.findIndex(x=>String(x.id)===String(id));
+    if(index===-1)return;
+    const item=list[index];
+    list.splice(index,1);
+    if(item.storageKey)await deleteMediaBlob(item.storageKey);
+    if(!state.deleted)state.deleted=[];
+    state.deleted.unshift({type,id,name,date:Date.now()});
+    saveState();
+    renderAllMedia();renderMenuLists();
+    history("Deleted "+type+": "+name);
+}
+
+function closeMoreMenu(id){
+    document.getElementById(id)?.classList.remove("show");
+}
+
+
+/* =====================================================
+   MUSIC
+===================================================== */
+
+async function addMusicFile(){
+
+    let input=
+        document.getElementById("musicFile");
+
+    let file=input.files[0];
+
+    if(!file){
+
+        alert("Please choose a music file.");
+
+        return;
+
+    }
+
+    const item={id:Date.now(),name:file.name,url:"",type:"Local File"};
+    musicItems.push(item);
+    try{await persistLocalItem("music",item,file);}catch(e){musicItems.pop();alert("Could not permanently store this file in the browser.");return;}
+    input.value="";
+    renderMusic();
+
+    history("Added music: "+file.name);
+
+}
+
+
+function addMusicURL(){
+
+    let input=
+        document.getElementById("musicURL");
+
+    let url=input.value.trim();
+
+    if(!url){
+
+        alert("Please enter music URL.");
+
+        return;
+
+    }
+
+    musicItems.push({
+
+        id:Date.now(),
+
+        name:"Online Music",
+
+        url:url,
+
+        type:"Music Link"
+
+    });
+
+    input.value="";
+
+    renderMusic();
+
+    history("Added music link");
+
+}
+
+
+function renderMusic(){
+
+    let list=
+        document.getElementById("musicList");
+
+    if(!musicItems.length){
+
+        list.innerHTML=`
+
+            <div class="no-media">
+                No Music
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+    list.innerHTML=
+        musicItems.map(item=>`
+
+        <div class="music-card">
+
+            <div class="music-info">
+
+                <div class="music-name">
+                    ${escapeHTML(item.name)}
+                </div>
+
+                <div class="music-type">
+                    ${item.type}
+                </div>
+
+                <audio
+                    id="audio${item.id}"
+                    controls
+                    style="width:100%;margin-top:10px">
+
+                    <source src="${item.url}">
+
+                </audio>
+
+            </div>
+
+            <div class="music-actions">
+
+                <button onclick="document.getElementById('audio${item.id}').play()">▶ Play</button>
+
+                <button onclick="document.getElementById('audio${item.id}').currentTime+=10">+10s</button>
+
+                <div class="media-actions-wrap">
+                    <button class="more-button" onclick="toggleMoreMenu('more-music-${item.id}',event)">⋮</button>
+                    <div id="more-music-${item.id}" class="more-menu">
+                        <button onclick="saveItem('music','${item.id}','${escapeHTML(item.name)}');closeMoreMenu('more-music-${item.id}')">🔖 Save</button>
+                        <button onclick="fav('music','${item.id}','${escapeHTML(item.name)}');closeMoreMenu('more-music-${item.id}')">⭐ Favourite</button>
+                        <button onclick="arch('music','${item.id}','${escapeHTML(item.name)}');closeMoreMenu('more-music-${item.id}')">🗄 Archive</button>
+                        <button onclick="hideItem('music','${item.id}','${escapeHTML(item.name)}');closeMoreMenu('more-music-${item.id}')">🙈 Hide</button>
+                        <button class="danger-btn" onclick="deleteItem('music','${item.id}','${escapeHTML(item.name)}');closeMoreMenu('more-music-${item.id}')">🗑️ Delete</button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        `).join("");
+
+}
+
+
+/* =====================================================
+   VIDEO
+===================================================== */
+
+async function addVideoFile(){
+
+    let input=
+        document.getElementById("videoFile");
+
+    let file=input.files[0];
+
+    if(!file){
+
+        alert("Please choose a video file.");
+
+        return;
+
+    }
+
+    const item={id:Date.now(),name:file.name,url:"",type:"Local Video"};
+    videoItems.push(item);
+    try{await persistLocalItem("video",item,file);}catch(e){videoItems.pop();alert("Could not permanently store this file in the browser.");return;}
+    input.value="";
+    renderVideos();
+
+    history("Added video: "+file.name);
+
+}
+
+
+function addVideoURL(){
+
+    let input=
+        document.getElementById("videoURL");
+
+    let url=input.value.trim();
+
+    if(!url){
+
+        alert("Please enter video URL.");
+
+        return;
+
+    }
+
+    videoItems.push({
+
+        id:Date.now(),
+
+        name:"Online Video",
+
+        url:url,
+
+        type:"Video Link"
+
+    });
+
+    input.value="";
+
+    renderVideos();
+
+    history("Added video link");
+
+}
+
+
+function renderVideos(){
+
+    let list=
+        document.getElementById("videoList");
+
+    if(!videoItems.length){
+
+        list.innerHTML=`
+
+            <div class="no-media">
+                No Video
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+    list.innerHTML=
+        videoItems.map(item=>`
+
+        <div class="video-card">
+
+            <div class="video-info">
+
+                <div class="video-name">
+                    ${escapeHTML(item.name)}
+                </div>
+
+                <div class="video-type">
+                    ${item.type}
+                </div>
+
+                <video
+                    id="video${item.id}"
+                    class="video-player"
+                    controls>
+
+                    <source src="${item.url}">
+
+                </video>
+
+            </div>
+
+            <div class="video-actions">
+
+                <button onclick="document.getElementById('video${item.id}').play()">▶ Play</button>
+
+                <button onclick="document.getElementById('video${item.id}').currentTime+=10">+10s</button>
+
+                <div class="media-actions-wrap">
+                    <button class="more-button" onclick="toggleMoreMenu('more-video-${item.id}',event)">⋮</button>
+                    <div id="more-video-${item.id}" class="more-menu">
+                        <button onclick="saveItem('video','${item.id}','${escapeHTML(item.name)}');closeMoreMenu('more-video-${item.id}')">🔖 Save</button>
+                        <button onclick="fav('video','${item.id}','${escapeHTML(item.name)}');closeMoreMenu('more-video-${item.id}')">⭐ Favourite</button>
+                        <button onclick="arch('video','${item.id}','${escapeHTML(item.name)}');closeMoreMenu('more-video-${item.id}')">🗄 Archive</button>
+                        <button onclick="hideItem('video','${item.id}','${escapeHTML(item.name)}');closeMoreMenu('more-video-${item.id}')">🙈 Hide</button>
+                        <button class="danger-btn" onclick="deleteItem('video','${item.id}','${escapeHTML(item.name)}');closeMoreMenu('more-video-${item.id}')">🗑️ Delete</button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        `).join("");
+
+}
+
+
+/* =====================================================
+   GALLERY
+===================================================== */
+
+async function addGalleryFile(){
+
+    let input=
+        document.getElementById("galleryFile");
+
+    let file=input.files[0];
+
+    if(!file){
+
+        alert("Please choose an image.");
+
+        return;
+
+    }
+
+    const item={id:Date.now(),name:file.name,url:"",type:"Local Image"};
+    galleryItems.push(item);
+    try{await persistLocalItem("gallery",item,file);}catch(e){galleryItems.pop();alert("Could not permanently store this image in the browser.");return;}
+    input.value="";
+    renderGallery();
+
+    history("Added image: "+file.name);
+
+}
+
+
+function addGalleryURL(){
+
+    let input=
+        document.getElementById("galleryURL");
+
+    let url=input.value.trim();
+
+    if(!url){
+
+        alert("Please enter image URL.");
+
+        return;
+
+    }
+
+    galleryItems.push({
+
+        id:Date.now(),
+
+        name:"Online Image",
+
+        url:url,
+
+        type:"Image Link"
+
+    });
+
+    input.value="";
+
+    renderGallery();
+
+    history("Added image link");
+
+}
+
+
+function renderGallery(){
+
+    let list=
+        document.getElementById("galleryList");
+
+    if(!galleryItems.length){
+
+        list.innerHTML=`
+
+            <div class="no-media">
+                No Images
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+    list.innerHTML=
+        galleryItems.map(item=>`
+
+        <div class="gallery-card">
+
+            <img
+                class="gallery-image"
+                src="${item.url}"
+                onclick="previewImage('${item.id}')">
+
+            <div class="gallery-info">
+
+                <div class="gallery-name">
+                    ${escapeHTML(item.name)}
+                </div>
+
+                <div class="gallery-type">
+                    ${item.type}
+                </div>
+
+                <div class="gallery-actions">
+
+                    <button onclick="previewImage('${item.id}')">🔍 View</button>
+
+                    <div class="media-actions-wrap">
+                        <button class="more-button" onclick="toggleMoreMenu('more-gallery-${item.id}',event)">⋮</button>
+                        <div id="more-gallery-${item.id}" class="more-menu">
+                            <button onclick="saveItem('gallery','${item.id}','${escapeHTML(item.name)}');closeMoreMenu('more-gallery-${item.id}')">🔖 Save</button>
+                            <button onclick="fav('gallery','${item.id}','${escapeHTML(item.name)}');closeMoreMenu('more-gallery-${item.id}')">⭐ Favourite</button>
+                            <button onclick="arch('gallery','${item.id}','${escapeHTML(item.name)}');closeMoreMenu('more-gallery-${item.id}')">🗄 Archive</button>
+                        <button onclick="hideItem('gallery','${item.id}','${escapeHTML(item.name)}');closeMoreMenu('more-gallery-${item.id}')">🙈 Hide</button>
+                            <button class="danger-btn" onclick="deleteItem('gallery','${item.id}','${escapeHTML(item.name)}');closeMoreMenu('more-gallery-${item.id}')">🗑️ Delete</button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        `).join("");
+
+}
+
+
+function previewImage(id){
+
+    let item=
+        galleryItems.find(
+            x=>String(x.id)===String(id)
+        );
+
+    if(!item)return;
+
+    document
+        .getElementById("previewContent")
+        .innerHTML=
+        `<img src="${item.url}">`;
+
+    document
+        .getElementById("previewModal")
+        .classList.add("show");
+
+    history("Viewed image");
+
+}
+
+
+function closePreview(event){
+
+    if(
+        event &&
+        event.target &&
+        event.target.id!=="previewModal"
+    ){
+        return;
+    }
+
+    document
+        .getElementById("previewModal")
+        .classList.remove("show");
+
+    document
+        .getElementById("previewContent")
+        .innerHTML="";
+
+}
+
+
+/* =====================================================
+   FILE MANAGER
+===================================================== */
+
+function getFileCategory(name){
+
+    let ext=
+        name
+        .split(".")
+        .pop()
+        .toLowerCase();
+
+    if(
+        ["pdf","doc","docx","txt","rtf","odt"]
+        .includes(ext)
+    ){
+        return "document";
+    }
+
+    if(
+        ["xls","xlsx","csv","ods"]
+        .includes(ext)
+    ){
+        return "spreadsheet";
+    }
+
+    if(
+        ["ppt","pptx","odp"]
+        .includes(ext)
+    ){
+        return "presentation";
+    }
+
+    if(
+        ["zip","rar","7z","tar","gz"]
+        .includes(ext)
+    ){
+        return "archive";
+    }
+
+    return "other";
+
+}
+
+
+function getFileIcon(category){
+
+    if(category==="document")
+        return "📄";
+
+    if(category==="spreadsheet")
+        return "📊";
+
+    if(category==="presentation")
+        return "📑";
+
+    if(category==="archive")
+        return "📦";
+
+    return "📁";
+
+}
+
+
+function formatBytes(bytes){
+
+    if(!bytes)
+        return "Unknown";
+
+    let units=[
+        "Bytes",
+        "KB",
+        "MB",
+        "GB"
+    ];
+
+    let i=Math.floor(
+        Math.log(bytes)/Math.log(1024)
+    );
+
+    return(
+        bytes/Math.pow(1024,i)
+    ).toFixed(2)
+    +" "
+    +units[i];
+
+}
+
+
+async function addLocalFile(){
+
+    let input=
+        document.getElementById("fileInput");
+
+    let file=input.files[0];
+
+    if(!file){
+
+        alert("Please choose a file.");
+
+        return;
+
+    }
+
+    const item={id:Date.now(),name:file.name,url:"",size:file.size,category:getFileCategory(file.name),date:Date.now()};
+    fileItems.push(item);
+    try{await persistLocalItem("file",item,file);}catch(e){fileItems.pop();alert("Could not permanently store this file in the browser.");return;}
+    input.value="";
+    renderFiles();
+
+    updateStats();
+
+    history("Added file: "+file.name);
+
+}
+
+
+function addFileURL(){
+
+    let input=
+        document.getElementById("fileURL");
+
+    let url=input.value.trim();
+
+    if(!url){
+
+        alert("Please enter file URL.");
+
+        return;
+
+    }
+
+    let name=
+        url
+        .split("/")
+        .pop()
+        .split("?")[0]
+        ||
+        "Online File";
+
+    fileItems.push({
+
+        id:Date.now(),
+
+        name:name,
+
+        url:url,
+
+        size:0,
+
+        category:getFileCategory(name),
+
+        date:Date.now()
+
+    });
+
+    input.value="";
+
+    renderFiles();
+
+    updateStats();
+
+    history("Added online file");
+
+}
+
+
+function filterFiles(category,button){
+
+    currentFileFilter=category;
+
+    document
+        .querySelectorAll(
+            ".file-category-tabs button"
+        )
+        .forEach(x=>{
+            x.classList.remove("active");
+        });
+
+    button.classList.add("active");
+
+    renderFiles();
+
+}
+
+
+function renderFiles(){
+
+    let items=
+        fileItems.slice();
+
+    if(
+        currentFileFilter!=="all"
+    ){
+
+        items=
+            items.filter(
+                x=>x.category===currentFileFilter
+            );
+
+    }
+
+    let search=
+        document
+        .getElementById("fileSearch")
+        .value
+        .toLowerCase();
+
+    if(search){
+
+        items=
+            items.filter(
+                x=>
+                x.name
+                .toLowerCase()
+                .includes(search)
+            );
+
+    }
+
+    let sort=
+        document
+        .getElementById("fileSort")
+        .value;
+
+    if(sort==="name"){
+
+        items.sort(
+            (a,b)=>
+            a.name.localeCompare(b.name)
+        );
+
+    }
+    else if(sort==="oldest"){
+
+        items.sort(
+            (a,b)=>a.date-b.date
+        );
+
+    }
+    else if(sort==="size"){
+
+        items.sort(
+            (a,b)=>
+            (b.size||0)-(a.size||0)
+        );
+
+    }
+    else{
+
+        items.sort(
+            (a,b)=>b.date-a.date
+        );
+
+    }
+
+    let list=
+        document.getElementById("fileList");
+
+    if(!items.length){
+
+        list.innerHTML=`
+
+            <div class="no-media">
+                No Files
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+    list.innerHTML=
+        items.map(item=>`
+
+        <div class="file-card">
+
+            <div class="file-icon">
+                ${getFileIcon(item.category)}
+            </div>
+
+            <div class="file-info">
+
+                <div class="file-name">
+                    ${escapeHTML(item.name)}
+                </div>
+
+                <div class="file-meta">
+
+                    ${item.category.toUpperCase()}
+                    •
+                    ${formatBytes(item.size)}
+
+                </div>
+
+            </div>
+
+            <div class="file-actions">
+
+                <button onclick="window.open('${item.url}','_blank')">👁 Open</button>
+
+                <div class="media-actions-wrap">
+                    <button class="more-button" onclick="toggleMoreMenu('more-file-${item.id}',event)">⋮</button>
+                    <div id="more-file-${item.id}" class="more-menu">
+                        <button onclick="saveItem('file','${item.id}','${escapeHTML(item.name)}');closeMoreMenu('more-file-${item.id}')">🔖 Save</button>
+                        <button onclick="fav('file','${item.id}','${escapeHTML(item.name)}');closeMoreMenu('more-file-${item.id}')">⭐ Favourite</button>
+                        <button onclick="arch('file','${item.id}','${escapeHTML(item.name)}');closeMoreMenu('more-file-${item.id}')">🗄 Archive</button>
+                        <button onclick="hideItem('file','${item.id}','${escapeHTML(item.name)}');closeMoreMenu('more-file-${item.id}')">🙈 Hide</button>
+                        <button class="danger-btn" onclick="deleteItem('file','${item.id}','${escapeHTML(item.name)}');closeMoreMenu('more-file-${item.id}')">🗑️ Delete</button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        `).join("");
+
+}
+
+
+function updateStats(){
+
+    document
+        .getElementById("totalFiles")
+        .innerText=fileItems.length;
+
+    document
+        .getElementById("documentCount")
+        .innerText=
+        fileItems.filter(
+            x=>x.category==="document"
+        ).length;
+
+    document
+        .getElementById("noteCount")
+        .innerText=notes.length;
+
+    document
+        .getElementById("otherCount")
+        .innerText=
+        fileItems.filter(
+            x=>
+            x.category==="other" ||
+            x.category==="archive"
+        ).length;
+
+}
+
+
+/* =====================================================
+   NOTES
+===================================================== */
+
+function saveNote(){
+
+    let title=
+        document
+        .getElementById("noteTitle")
+        .value
+        .trim();
+
+    let text=
+        document
+        .getElementById("noteText")
+        .value
+        .trim();
+
+    if(!title && !text){
+
+        alert("Write something.");
+
+        return;
+
+    }
+
+    notes.push({
+
+        id:Date.now(),
+
+        title:
+            title ||
+            "Untitled Note",
+
+        text:text,
+
+        date:Date.now()
+
+    });
+
+    document
+        .getElementById("noteTitle")
+        .value="";
+
+    document
+        .getElementById("noteText")
+        .value="";
+
+    document
+        .getElementById("noteAddBox")
+        .classList.remove("show");
+
+    renderNotes();
+
+    updateStats();
+
+    history("Created note");
+
+}
+
+
+function renderNotes(){
+
+    let list=
+        document.getElementById("notesList");
+
+    if(!notes.length){
+
+        list.innerHTML=`
+
+            <div class="no-media">
+                No Notes
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+    list.innerHTML=
+        notes.map(note=>`
+
+        <div class="note-card">
+
+            <div class="note-title">
+
+                ${escapeHTML(note.title)}
+
+            </div>
+
+            <div class="note-content">
+
+                ${escapeHTML(note.text)}
+
+            </div>
+
+            <div class="note-date">
+
+                ${new Date(
+                    note.date
+                ).toLocaleString()}
+
+            </div>
+
+            <div class="note-actions">
+
+                <div class="media-actions-wrap">
+                    <button class="more-button" onclick="toggleMoreMenu('more-note-${note.id}',event)">⋮</button>
+                    <div id="more-note-${note.id}" class="more-menu">
+                        <button onclick="saveItem('note','${note.id}','${escapeHTML(note.title)}');closeMoreMenu('more-note-${note.id}')">🔖 Save</button>
+                        <button onclick="fav('note','${note.id}','${escapeHTML(note.title)}');closeMoreMenu('more-note-${note.id}')">⭐ Favourite</button>
+                        <button onclick="arch('note','${note.id}','${escapeHTML(note.title)}');closeMoreMenu('more-note-${note.id}')">🗄 Archive</button>
+                        <button onclick="hideItem('note','${note.id}','${escapeHTML(note.title)}');closeMoreMenu('more-note-${note.id}')">🙈 Hide</button>
+                        <button class="danger-btn" onclick="deleteItem('note','${note.id}','${escapeHTML(note.title)}');closeMoreMenu('more-note-${note.id}')">🗑️ Delete</button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        `).join("");
+
+}
+
+
+/* =====================================================
+   SEARCH
+===================================================== */
+
+function searchWebsite(){
+
+    let value=
+        document
+        .getElementById("searchInput")
+        .value
+        .toLowerCase();
+
+    document
+        .querySelectorAll(
+            ".music-card,.video-card,.gallery-card,.file-card,.note-card"
+        )
+        .forEach(card=>{
+
+            card.style.display=
+                !value ||
+                card.innerText
+                .toLowerCase()
+                .includes(value)
+                ?
+                ""
+                :
+                "none";
+
+        });
+
+    if(value){
+
+        history(
+            "Search: "+value
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   AI MODE
+===================================================== */
+
+function askAI(){
+
+    let input=
+        document
+        .getElementById("aiInput");
+
+    let question=
+        input.value.trim();
+
+    if(!question)
+        return;
+
+    let chat=
+        document
+        .getElementById("aiChat");
+
+    chat.innerHTML+=`
+
+        <div class="ai-msg user">
+            ${escapeHTML(question)}
+        </div>
+
+    `;
+
+    let q=
+        question.toLowerCase();
+
+    let answer=
+        "I can help you with this website. Ask me about files, music, video, notes, saved items, favourite, archive, history, privacy or calculator.";
+
+    if(q.includes("file")){
+
+        answer=
+            "You currently have "
+            +fileItems.length+
+            " file(s).";
+
+    }
+    else if(q.includes("music")){
+
+        answer=
+            "You currently have "
+            +musicItems.length+
+            " music item(s).";
+
+    }
+    else if(q.includes("video")){
+
+        answer=
+            "You currently have "
+            +videoItems.length+
+            " video item(s).";
+
+    }
+    else if(q.includes("note")){
+
+        answer=
+            "You currently have "
+            +notes.length+
+            " note(s).";
+
+    }
+    else if(
+        q.includes("favorite") ||
+        q.includes("favourite")
+    ){
+
+        answer=
+            "You have "
+            +state.favorites.length+
+            " favourite item(s).";
+
+    }
+    else if(q.includes("save")){
+
+        answer=
+            "You have "
+            +state.saved.length+
+            " saved item(s).";
+
+    }
+    else if(q.includes("archive")){
+
+        answer=
+            "You have "
+            +state.archive.length+
+            " archived item(s).";
+
+    }
+    else if(q.includes("history")){
+
+        answer=
+            "You have "
+            +state.history.length+
+            " history entries.";
+
+    }
+    else if(q.includes("privacy")){
+
+        answer=
+            state.privacy.privateMode
+            ?
+            "Private Mode is ON."
+            :
+            "Private Mode is OFF.";
+
+    }
+
+    chat.innerHTML+=`
+
+        <div class="ai-msg bot">
+
+            ${escapeHTML(answer)}
+
+        </div>
+
+    `;
+
+    chat.scrollTop=
+        chat.scrollHeight;
+
+    input.value="";
+
+    history("Used AI Mode");
+
+}
+
+
+/* =====================================================
+   CALCULATOR
+===================================================== */
+
+function calcAdd(value){
+
+    if(calcExpr.length<50){
+
+        calcExpr+=value;
+
+        document
+            .getElementById("calcDisplay")
+            .value=calcExpr;
+
+    }
+
+}
+
+
+function calcClear(){
+
+    calcExpr="";
+
+    document
+        .getElementById("calcDisplay")
+        .value="0";
+
+}
+
+
+function calcBack(){
+
+    calcExpr=
+        calcExpr.slice(0,-1);
+
+    document
+        .getElementById("calcDisplay")
+        .value=
+        calcExpr || "0";
+
+}
+
+
+function calcEqual(){
+
+    try{
+
+        if(
+            !/^[0-9+\-*/%.() ]+$/
+            .test(calcExpr)
+        ){
+
+            throw new Error();
+
+        }
+
+        let result=
+            Function(
+                "return "+calcExpr
+            )();
+
+        calcExpr=String(result);
+
+        document
+            .getElementById("calcDisplay")
+            .value=calcExpr;
+
+        history("Calculator used");
+
+    }
+    catch(e){
+
+        document
+            .getElementById("calcDisplay")
+            .value="Error";
+
+        calcExpr="";
+
+    }
+
+}
+
+
+/* =====================================================
+   PRIVACY / SAFETY / SETTINGS
+===================================================== */
+
+function togglePrivacy(){
+
+    state.privacy.privateMode=
+        !state.privacy.privateMode;
+
+    saveState();
+
+    updateToggles();
+
+}
+
+
+function toggleSafe(){
+
+    state.safety.safeMode=
+        !state.safety.safeMode;
+
+    saveState();
+
+    updateToggles();
+
+}
+
+
+function toggleDeleteConfirm(){
+
+    state.safety.deleteConfirm=
+        !state.safety.deleteConfirm;
+
+    saveState();
+
+    updateToggles();
+
+}
+
+
+function toggleAutoSave(){
+
+    state.settings.autoSave=
+        !state.settings.autoSave;
+
+    if(
+        state.settings.autoSave
+    ){
+
+        saveState();
+
+    }
+
+    updateToggles();
+
+}
+
+
+function toggleAnimations(){
+
+    state.settings.animations=
+        !state.settings.animations;
+
+    saveState();
+
+    updateToggles();
+
+}
+
+
+function updateToggles(){
+
+    document
+        .getElementById("privacyToggle")
+        .classList.toggle(
+            "on",
+            state.privacy.privateMode
+        );
+
+    document
+        .getElementById("safeToggle")
+        .classList.toggle(
+            "on",
+            state.safety.safeMode
+        );
+
+    document
+        .getElementById("deleteToggle")
+        .classList.toggle(
+            "on",
+            state.safety.deleteConfirm
+        );
+
+    document
+        .getElementById("autoSaveToggle")
+        .classList.toggle(
+            "on",
+            state.settings.autoSave
+        );
+
+    document
+        .getElementById("animationToggle")
+        .classList.toggle(
+            "on",
+            state.settings.animations
+        );
+
+}
+
+
+/* =====================================================
+   RESET
+===================================================== */
+
+function resetWebsite(){
+
+    if(
+        !confirm(
+            "Reset all website data?"
+        )
+    ){
+        return;
+    }
+
+    localStorage.removeItem(
+        "yourLogoWebsiteState"
+    );
+
+    state={
+
+        saved:[],
+        favorites:[],
+        archive:[],
+        history:[],
+        deleted:[],
+
+        account:{
+            name:"Guest User"
+        },
+
+        privacy:{
+            privateMode:false
+        },
+
+        safety:{
+            safeMode:true,
+            deleteConfirm:true
+        },
+
+        settings:{
+            autoSave:true,
+            animations:true
+        },
+
+        language:"English"
+
+    };
+
+    renderMenuLists();
+
+    loadState();
+
+    alert(
+        "Website settings reset."
+    );
+
+}
+
+
+/* =====================================================
+   SECURITY
+===================================================== */
+
+function escapeHTML(text){
+
+    return String(text)
+
+        .replace(/&/g,"&amp;")
+
+        .replace(/</g,"&lt;")
+
+        .replace(/>/g,"&gt;")
+
+        .replace(/"/g,"&quot;")
+
+        .replace(/'/g,"&#039;");
+
+}
+
+
+/* =====================================================
+   INITIALIZE
+===================================================== */
+
+loadState();
+
+(async function initializePersistentWebsite(){
+    await restoreMedia();
+    renderMenuLists();
+    renderMusic();
+    renderVideos();
+    renderGallery();
+    renderFiles();
+    renderNotes();
+    updateStats();
+})();
+
+</script>
+
+</body>
+</html>
